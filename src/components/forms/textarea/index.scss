@@ -1,0 +1,52 @@
+@import "../../../components/layouts/styles/general-styles.scss";
+
+.textarea {
+  @include flex-column-box;
+
+  &--row {
+    display: flex;
+    height: 50px;
+    width: 100%;
+
+    &--label {
+      text-align: left;
+      width: 100px;
+    }
+    &--textarea {
+      height: 30px;
+      width: 200px;
+      &.errorClass {
+        border: solid 1px red;
+      }
+    }
+    &--error {
+      margin: 0 auto;
+    }
+  }
+}
+@media only screen and (min-width: 425px) {
+  .textarea--row {
+    &--label {
+      width: 30%;
+    }
+    &--textarea {
+      height: 30px;
+      width: 70%;
+    }
+    // &--error {
+    //   text-align: right;
+    // }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .textarea--row {
+    //margin-bottom: 10%;
+    &--label {
+      width: 30%;
+    }
+    &--textarea {
+      width: 70%;
+    }
+  }
+}
