@@ -1,9 +1,11 @@
 import React from "react";
 import "./index.scss";
 
-function APILogo() {
+function APILogo({classes}) {
     return (
-        <img className="logo" src={process.env.PUBLIC_URL + '/images/spotify-logo.png'}></img>
+        <div className={` ${classes}`}>
+            <img className="logo" src={process.env.PUBLIC_URL + '/images/spotify-logo.png'}></img>
+        </div>
     );
 }
 

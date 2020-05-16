@@ -36,7 +36,7 @@ const Home = () => {
                     <h1>SpotySearch</h1>
                     <p>Search your favourite songs over Spotify, just enter an artist's name in the following search box and enjoy</p>
                 </div>
-                <SearchContainer className="hero--search" />
+                <SearchContainer classes=" hero--search" />
             </section>
             {/* <section className="news">
                 <div className="news--grid">

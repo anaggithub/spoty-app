@@ -1,70 +1,24 @@
 @import "../layouts/styles/general-styles.scss";
 
 .footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: $font-special;
-  height: 200px;
-  @include flex-column-box;
-  padding: 30px 20px 30px 20px;
+  height: 80px;
+  // background-color: pink;
 
-  &--socialmedia {
-    display: flex;
-    justify-content: center;
-
-    &--icon {
-      width: 35px;
-      padding: 10px;
-      border: 1px solid $color-lighter-gray;
-    }
-  }
-
-  &--info {
-    &--paragraph {
-      margin-top: 20px;
-      //  border: black solid 1px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
+  &--logo {
+    margin-right: 20px;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .footer {
-    position: relative;
-    flex-direction: row;
-    align-items: center;
-
-    &--socialmedia {
-      &--icon {
-        width: 43px;
-        padding: 10px 5px 10px 5px;
-      }
-    }
-    &--info {
-      margin-top: 10px;
-
-      &--paragraph {
-        margin-top: 10px;
-        font-size: 1rem;
-      }
-    }
-  }
 }
 
 @media only screen and (min-width: 1024px) {
   .footer {
-    &--socialmedia {
-      width: 30%;
-      margin: 0px;
-    }
-    &--info {
-      margin: 0px;
-      display: flex;
-      align-items: center;
-      &--paragraph {
-        margin: 0px;
-        margin-left: 30px;
-        font-size: 1rem;
-      }
-    }
+    font-size: 1.3rem;
   }
 }

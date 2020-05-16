@@ -6,23 +6,15 @@
   &--row {
     border: black solid 1px;
     display: flex;
+    align-items: center;
     height: 30px;
     width: 100%;
 
-    &--label {
-      text-align: left;
-      width: 100px;
-    }
-    &--input {
-      background-color: transparent;
-      border: none;
-      height: 30px;
-      width: 200px;
-    }
+    // &--label {
+    //   text-align: left;
+    //   width: 100px;
+    // }
 
-    i {
-      background-color: transparent;
-    }
     &--error {
       margin: 0 auto;
     }
@@ -31,25 +23,26 @@
     }
   }
 }
-@media only screen and (min-width: 425px) {
-  .input--row {
-    &--label {
-      width: 30%;
-    }
-    &--input {
-      height: 30px;
-      width: 70%;
-    }
-  }
-}
 
-@media only screen and (min-width: 600px) {
-  .input--row {
-    &--label {
-      width: 30%;
-    }
-    &--input {
-      width: 70%;
-    }
-  }
-}
+// @media only screen and (min-width: 425px) {
+//   .input--row {
+//     &--label {
+//       width: 30%;
+//     }
+//     &--input {
+//       height: 30px;
+//       width: 70%;
+//     }
+//   }
+// }
+
+// @media only screen and (min-width: 600px) {
+//   .input--row {
+//     &--label {
+//       width: 30%;
+//     }
+//     &--input {
+//       width: 70%;
+//     }
+//   }
+// }

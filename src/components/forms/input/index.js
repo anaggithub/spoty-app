@@ -1,11 +1,11 @@
 import React, { Children } from "react";
 import "./index.scss";
 
-function Input({ name, type, placeholder, onChange, error, errorMessage, children}) {
+function Input({ name, type, placeholder, onChange, error, errorMessage, classes, children }) {
     return (
-        <div className="input">
+        <div className={`input ${classes}`}>
             <div className={`input--row ${error ? 'errorClass' : ""}`}>
-                {children}
+                <div className="input--row--chilchen">{children}</div>
                 <input
                     className="input--row--input"
                     name={name}
@@ -16,7 +16,7 @@ function Input({ name, type, placeholder, onChange, error, errorMessage, childre
                 </input>
             </div>
             <div className="input--row">
-                {error && <p className="input--row--error">{`Ingrese un ${errorMessage} válido!`}</p>}
+                {error && <p className="input--row--error">{`${errorMessage}`}</p>}
             </div>
         </div>
     );
