@@ -1,11 +1,41 @@
+
+@import "../../components/layouts/styles/general-styles.scss";
+
 .hero {
+   width: 100%;
+  //@include flex-column-box;
+  //font-size:1rem;
   margin-top: 80px;
+  padding: 0 2%;
+  text-align: left;
   // background-color: pink;
   &--info {
-   // background-color: yellow;
+    padding-top: 40px;
+    //background-color: yellow;
   }
+  &--paragraph {
+    width: 100%;
+    margin-top: 20px;
+  }
+
   &--search {
-   
+    margin-top: 20px;
+
+    input {
+      padding-left: 5px;
+      color: $color-primary;
+      background-color: transparent;
+      border: solid white 0.5px;
+      width: 250px;
+    }
+    i {
+      padding-right: 10px;
+    }
+    .input--row--error{
+      margin-top: 5px;
+      font-family: $font-secondary;
+      font-size: 1rem;
+    }
   }
 }
 
@@ -53,7 +83,13 @@
 //   }
 // }
 
-// @media only screen and (min-width: 700px) {
+ @media only screen and (min-width: 700px) {
+  .hero {
+    padding: 0 5%;
+    &--search {
+      margin-top: 30px;
+    }  
+  }
 //   .news {
 //     margin: 0 30px 0 30px;
 //     &--grid {
@@ -71,9 +107,19 @@
 //       }
 //     }
 //   }
-// }
+}
 
-// @media only screen and (min-width: 1020px) {
+ @media only screen and (min-width: 1020px) {
+  .hero {
+    padding: 0 5%;
+    font-size: 1.1rem;
+    &--search {
+      margin-top: 40px;
+    }
+    p{
+      margin-bottom: 5px;
+    }
+  }
 //   .news {
 //     &--grid {
 //       grid-template-columns: repeat(4, 24%);
@@ -104,4 +150,4 @@
 //       }
 //     }
 //   }
-// }
+ }

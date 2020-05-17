@@ -2,28 +2,24 @@
 
 .input {
   @include flex-column-box;
+  width: 100%;
 
   &--row {
-    border: black solid 1px;
+    //  border: black solid 1px;
     display: flex;
-    align-items: center;
+    justify-content: center;
     height: 30px;
-    width: 100%;
-
-    // &--label {
-    //   text-align: left;
-    //   width: 100px;
-    // }
 
     &--error {
       margin: 0 auto;
     }
-    &.errorClass {
-      border: solid 1px red;
+    &--input {
+      &.errorClass {
+        border: solid 1px red;
+      }
     }
   }
 }
-
 // @media only screen and (min-width: 425px) {
 //   .input--row {
 //     &--label {

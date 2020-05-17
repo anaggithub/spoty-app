@@ -4,11 +4,11 @@ import "./styles/layout-default.scss"
 import Header from "../header";
 import Footer from "../footer";
 
-const DefaultLayout = ({children}) => {
+const DefaultLayout = ({children, showSearch}) => {
 
     return (
         <div className="default-layout container">
-            <Header />
+            <Header showSearch = {showSearch}/>
             <div className="default-layout--content">
                 {children}
             </div>

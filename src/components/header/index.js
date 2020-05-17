@@ -1,18 +1,21 @@
 import React from "react";
 import "./index.scss";
-import APILogo from "../api-logo"
-import SearchContainer from "../search-container"
-import { Link } from "react-router-dom"
+import APILogo from "../api-logo";
+import SearchContainer from "../search-container";
+import { Link } from "react-router-dom";
 
-const Header = ({children}) => {
-
-  
+const Header = ({ showSearch = false }) => {
   return (
     <header className="header">
-      <nav className="header--nav container" >
+      <nav className="header--nav container">
         <APILogo className="header--nav--logo" />
-        {children}
-     
+        {showSearch && (
+          <SearchContainer
+            classes="header--search"
+            inputPlaceholder="Type the name of your favourite artist"
+          ></SearchContainer>
+        )}
+
         {/* <ul className="header--nav--list">
           <li>
             <Link to="/"> <i className="fas fa-home"></i>Inicio</Link>
@@ -28,21 +31,20 @@ const Header = ({children}) => {
       </nav>
     </header>
   );
-
-}
+};
 
 export default Header;
 
-  //   const handleMenu = () => {
-  //   let menuCollection = document.getElementsByClassName('header--nav--list')
-  // //  console.log(menuCollection)
-  //   if (menuCollection[0].style.display === "block") {
-  //     menuCollection[0].style.display = "none";
-  //   }
-  //   else {
-  //     menuCollection[0].style.display = "block";
-  //   }
-  // }
+//   const handleMenu = () => {
+//   let menuCollection = document.getElementsByClassName('header--nav--list')
+// //  console.log(menuCollection)
+//   if (menuCollection[0].style.display === "block") {
+//     menuCollection[0].style.display = "none";
+//   }
+//   else {
+//     menuCollection[0].style.display = "block";
+//   }
+// }
 
 // return (
 //     <header className="header">
@@ -63,4 +65,3 @@ export default Header;
 //       </nav>
 //     </header>
 //   );
-

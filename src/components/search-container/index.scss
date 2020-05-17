@@ -1,22 +1,8 @@
+@import "../layouts/styles/general-styles.scss";
+
 .search-container {
   display: flex;
-  justify-content: center;
-  width: 100%;
-  display: flex;
+  justify-content: right;
+  width: 100%;//
   //background-color: orange;
-
-  &--input {
-  //  background-color: pink;
-    margin: 20px 0;
-
-    input{
-      background-color: transparent;
-      border: none;
-      width: 200px;
-    }
-    i{
-      padding: 10px;
-    }
-    
-  }
 }
