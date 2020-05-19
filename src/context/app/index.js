@@ -6,7 +6,7 @@ const AppProvider = ({ children }) => {
 
     const [appStorage, setStorage] = useState(
         {
-            artists: [{name:"led"}],
+            artists: [],
             favorites: {},
         }
     )
