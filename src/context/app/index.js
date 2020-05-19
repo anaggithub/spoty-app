@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 const AppConsumer = React.createContext();
 
@@ -6,8 +6,8 @@ const AppProvider = ({ children }) => {
 
     const [appStorage, setStorage] = useState(
         {
-            artists: {},
-            favourites: {},
+            artists: [{name:"led"}],
+            favorites: {},
         }
     )
 

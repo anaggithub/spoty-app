@@ -2,7 +2,7 @@ import React from "react";
 import "./index.scss";
 import APILogo from "../api-logo";
 import SearchContainer from "../search-container";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 const Header = ({ showSearch = false }) => {
   return (

@@ -1,44 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./index.scss";
 
 import Input from "../forms/input";
 
-import callFetch from "../../services/search-results";
+import callArtistsFetch from "../../services/search-results";
 
-import useArtists from "../../context/artists"
-
+import useArtists from "../../context/artists";
 
 const SearchContainer = ({ classes, inputPlaceholder }) => {
-
   const [search, setSearch] = useState("");
   const [searchError, setSearchError] = useState(false);
-  
-   const { setArtists } = useArtists()
 
-
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-//    console.log(search)
-  };
-
+  const { setArtists } = useArtists();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     !search ? setSearchError(true) : setSearchError(false);
-    // console.log(searchError);
-    //console.log(search);
-    setArtists(await callFetch(search));
+    const res = await callArtistsFetch(search);
+    const items = res.artists.items;
+    setArtists(items);
   };
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     setArtists(await callFetch(search));
-  //   //  updateArticle(article)
-  //   }
-  //   fetchData();
-  // }, []);
-
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+    //    console.log(search)
+  };
 
   return (
     <form

@@ -1,18 +1,21 @@
 //import newsMock from './mock.json';
-import config from "../../config"
+import config from "../../config";
 
-const { HOST } = config.API_SPOTIFY
+const { HOST, TOKEN } = config.API_SPOTIFY;
 
-const ARTISTS_URL = HOST + '/artists/' 
+const myHeaders = {
+  Authorization: `Bearer ${TOKEN}`,
+  "Content-Type": "application/json",
+};
 
-const callFetch = async (artist) => {
-    let request = ""
-    request = new Request(ARTISTS_URL + artist) 
-    const res = await fetch(request)
-    const artists = await res.json()
-    console.log(artists)
-    return artists
-}
+const callArtistsFetch = async (artist) => {
+  let request = new Request(`${HOST}search/?q=${artist}&type=artist`);
+  let res = await fetch(request, {
+    headers: myHeaders,
+  });
 
+  let artists = await res.json();
+  return artists;
+};
 
-export default callFetch
+export default callArtistsFetch;

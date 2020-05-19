@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+
+const token = "BQB936e2MigQOatm3Y_ejqO-UgTGNvWnhaNUiITT2n_cXEDgi5gr3aujeg0rOxWQn_2OpTmUiQYpvjHRjJCoCJ2W99EN7U5Mo8d3BpdXLUjEpKJ6TemYvsCSn9DgXxSRUEtp5j5CWmJ4UdO-phhQj69ukOj4CxDs8kT-hXdBVb-TXX-r"
 
 const Login = () => {
-  const [userId, setUserId] = useState(null)
+  //const [userId, setUserId] = useState(null)
   const myHeaders = {
-    'Authorization': 'Bearer BQC6cmQ9_GvwOO1wUuDCuH5CJJUKr6jng6Vgq3om9Qk_ssI3smpMC7ogqaope56ThN-mFY8xn47DCs08ji3Mx8iE-LiUscT34I6O0JyFLKEtXbtYbUnQ6l-S2J7LpKmWOBhTxD-BS5E1nFQAUjf7oRKMxZk65N1kMnWaP0sTnDCUXDmR',
+    'Authorization': `Bearer ${token}`,
     'Content-Type': 'application/json'
   }
 //   useEffect(() => {
@@ -16,36 +18,35 @@ const Login = () => {
 //   }, [])
   
   useEffect(() => {
-    fetch('https://api.spotify.com/v1/artists/', {
+    fetch('https://api.spotify.com/v1/search/?q=zeppelin&type=artist', {
       headers: myHeaders
     })
     .then(res => res.json() )
-  //  .then(({id}) => setUserId(id))
     .then(data => console.log(data))
     .catch(err => console.log(err))
   }, [])
   
 
-  const getPlayList = () => {
-    fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-      headers: myHeaders
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-  }
-  // const getMyTopArtists = () => {
-  //   fetch(`https://api.spotify.com/v1/me/top/artists?limit=5`, {
-  //     method: 'GET',
-  //     headers: myHeaders
-  //   })
-  //   .then(res =>res.json())
-  //   .then(data => console.log(data))
-  //   .catch(err => console.log(err))
-  // }
+//   const getPlayList = () => {
+//     fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+//       headers: myHeaders
+//     })
+//     .then(res => res.json())
+//     .then(data => console.log(data))
+//   }
+//   const getMyTopArtists = () => {
+//     fetch(`https://api.spotify.com/v1/me/top/artists?limit=5`, {
+//       method: 'GET',
+//       headers: myHeaders
+//     })
+//     .then(res =>res.json())
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err))
+//   }
   return (
     <div className="App">
-      <p>{userId && userId}</p>
-      <button onClick={getPlayList}>Get PlayList</button>
+     
+      <button >PlayList</button>
       {/* <button onClick={getMyTopArtists}>Get My Top Artists</button> */}
     </div>
   );

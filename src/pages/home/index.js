@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React  from "react";
 import "./index.scss";
 
 import Layout from "../../components/layouts";
 import SearchContainer from "../../components/search-container";
 
-import callFetch from "../../services/search-results";
+import useArtists from "../../context/artists";
 
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 const Home = () => {
-  //  const [favourites, setFavourites] = useState([]);
+ //  const [favourites, setFavourites] = useState([]);
+ const { artists } = useArtists();
+
+ 
+ console.log(artists)
 
   return (
     <Layout>

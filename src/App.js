@@ -4,8 +4,7 @@ import ArtistList from "./pages/artist-list";
 import Artist from "./pages/artist";
 import Album from "./pages/album";
 import Login from "./pages/login";
-import Contact from "./pages/contact";
-import About from "./pages/about";
+
 import {   BrowserRouter as Router,   Switch,   Route,   Redirect, } from "react-router-dom";
 import { AppProvider } from "./context/app";
 
@@ -19,9 +18,7 @@ const App = () => {
           <Route exact path="/home" component={Home} />
           <Route exact path="/home/artists" component={ArtistList} />
           <Route exact path="/home/artists/:artist" component={Artist} />
-          <Route exact path="/home/artists/:artist/:album" component={Album} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/about" component={About} />
+          <Route exact path="/home/artists/:artist/:album" component={Album} />          
         </Switch>
       </Router>
     </AppProvider>

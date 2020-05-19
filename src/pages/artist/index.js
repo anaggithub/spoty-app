@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./index.scss";
 
 import Layout from "../../components/layouts";
-import SearchContainer from "../../components/search-container";
+//import SearchContainer from "../../components/search-container";
 
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 const Artist = () => {
   return (

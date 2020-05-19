@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import "./index.scss";
 
 function Input({ name, type, placeholder, onChange, error, errorMessage, classes, children }) {
