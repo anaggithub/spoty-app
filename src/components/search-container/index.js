@@ -27,8 +27,9 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
       setSearchError(true);
     } else {
       const res = await callArtistsFetch(search);
+      console.log(res)
       let data = res.artists.items;
-    //  console.log(data, typeof data);
+      //console.log(data, typeof data);
 
       if (!data || !data.length) {
         //ESTA VALIDACION NO ENTIENDO POR QUE SOLO FUNCIONA CON .LENGHT :(

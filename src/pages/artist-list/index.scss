@@ -3,13 +3,13 @@
 .artist-list {
   @include flex-column-box;
   margin-top: 80px;
-  padding: 0 1%;
+  padding: 0 5%;
   text-align: left;
   font-size: 0.8rem;
   // background-color: pink;
   &--info {
     padding-top: 40px;
-//    border-bottom: 1px solid #c9c9c9;
+    //    border-bottom: 1px solid #c9c9c9;
     //background-color: yellow;
   }
   &--paragraph {
@@ -40,22 +40,27 @@
     margin-top: 10px;
   }
 
-  &--grid{
-    .artist-box{
-      display:flex;
-      background-color: pink;
-      &--image{
-        width:50px;
-        height: auto;
+  &--grid {
+   
+    @include flex-column-box;
+
+    .artist-box {
+      margin-top:10px;
+      display: flex;
+      border: black solid 1px;
+      &--image {
+        width: 50%;
+        //  height: auto;
       }
+      // &--title {
+      // }
     }
   }
-  
 }
 
 @media only screen and (min-width: 700px) {
   .artist-list {
-//    padding: 0 5%;
+    //    padding: 0 5%;
     &--search {
       display: block;
       margin-top: 30px;
@@ -65,7 +70,7 @@
 
 @media only screen and (min-width: 1020px) {
   .artist-list {
-   // padding: 0 5%;
+    // padding: 0 5%;
     font-size: 1.1rem;
     &--search {
       margin-top: 40px;

@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import "./index.scss";
 
 import Layout from "../../components/layouts";
 import SearchContainer from "../../components/search-container";
 import useArtists from "../../context/artists";
+import useArtistID from "../../context/artist-id";
 
-//import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const ArtistList = () => {
   const { artists } = useArtists();
+  const { setArtistID } = useArtistID();
+  const [redirect, setRedirect] = useState(false);
 
   return (
     <Layout>
@@ -16,7 +19,7 @@ const ArtistList = () => {
         <div className="artist-list--info">
           <h2 className="artist-list--title">Artists</h2>
           <p className="artist-list--paragraph">
-            You are currently searching the:
+            You are currently searching: 
           </p>
           <SearchContainer
             classes="artist-list--search"
@@ -25,17 +28,23 @@ const ArtistList = () => {
           <p className="artist-list--location">Home > Artists</p>
         </div>
 
-        <div className="artist-list-grid">
+        <div className="artist-list--grid">
           {artists &&
             artists.map((e) => {
               if (e.images[0]) {
                 return (
-                  <ArtistBox name={e.name} key={e.id} url={e.images[0].url} />
+                  <ArtistBox name={e.name} key={e.id} url={e.images[0].url }  
+                //    onClick={event => {
+                //     setArtistID(e.id)
+                  
+                // }}
+                 />
                 );
               }
             })}
         </div>
       </section>
+      {redirect && <Redirect to="/home/artists/album" />}
     </Layout>
   );
 };
