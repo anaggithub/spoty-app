@@ -4,16 +4,16 @@ import "./index.scss";
 import Layout from "../../components/layouts";
 import SearchContainer from "../../components/search-container";
 
-import useArtists from "../../context/artists";
+//import useArtists from "../../context/artists";
 
 //import { Link } from "react-router-dom";
 
 const Home = () => {
  //  const [favourites, setFavourites] = useState([]);
- const { artists } = useArtists();
+ //const { artists } = useArtists();
 
  
- console.log(artists)
+ //console.log(artists)
 
   return (
     <Layout>

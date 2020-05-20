@@ -1,10 +1,7 @@
 import React from "react";
 import "./index.scss";
 import Layout from "../../components/layouts";
-//import SearchContainer from "../../components/search-container";
 import useArtistID from "../../context/artist-id";
-
-//import { Redirect } from "react-router-dom";
 
 const Album = () => {
   const { artistID } = useArtistID();

@@ -2,10 +2,6 @@
 
 .header {
   background-color: $color-secondary;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 80px;
   display: flex;
@@ -13,9 +9,10 @@
   align-items: center;
   border-bottom: 1px solid #c9c9c9;
   position: relative;
+
   &--nav {
     width: 100%;
-    background-color: orange;
+    // background-color: orange;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,37 +24,53 @@
     font-size: 1.5rem;
     cursor: pointer;
   }
-  &--search {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -9;
-    background-color: blue;
+  .header--search {
+    // background-color: red;
+    display: flex;
+    justify-content: flex-end;
+
+    input {
+      padding-left: 5px;
+      color: $color-primary;
+      background-color: transparent;
+      width: 250px;
+    }
+    i {
+      padding-right: 10px;
+    }
+    .input--row--error {
+      margin-top: 5px;
+      font-family: $font-secondary;
+      font-size: 1rem;
+    }
   }
 }
-.active {
-  transform: translateY(100%);
-}
+
 @media only screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .header--search {
+    position: absolute;
+    right: 0;
+    margin-top: 90px;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+  .active {
+    transform: translateX(0%);
+  }
 }
-@media only screen and (min-width: 769px) {
-  //   .header {
-  //     &--burger {
-  //       display: none;
-  //     }
-  //     &--nav {
-  //       font-size: 1.3rem;
-  //       &--list {
-  //         display: flex;
-  //         li {
-  //           display: flex;
-  //           padding: 0 1rem;
-  //           i {
-  //             display: inline;
-  //             margin-right: 30px;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
+
+@media only screen and (min-width: 768px) {
+  .header {
+    &--icon {
+      display: none;
+    }
+    &--search {
+      //   background-color: palegoldenrod;
+      margin-top: 20px;
+      margin-right: 20px;
+    }
+  }
 }

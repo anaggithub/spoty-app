@@ -2,14 +2,14 @@
 
 .artist-list {
   @include flex-column-box;
-  margin-top: 80px;
   padding: 0 5%;
   text-align: left;
   font-size: 0.8rem;
-  // background-color: pink;
+  margin-top: 30px;
+
   &--info {
-    padding-top: 40px;
-    //    border-bottom: 1px solid #c9c9c9;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c9c9c9;
     //background-color: yellow;
   }
   &--paragraph {
@@ -17,7 +17,7 @@
   }
 
   &--search {
-    display: none;
+    //display: none;
     margin-top: 20px;
 
     input {
@@ -36,47 +36,65 @@
       font-size: 1rem;
     }
   }
+
   &--location {
     margin-top: 10px;
   }
 
   &--grid {
-   
     @include flex-column-box;
-
+    margin-top: 30px;
     .artist-box {
-      margin-top:10px;
+      //background-color: $color-light-gray;
+      margin-top: 20px;
       display: flex;
-      border: black solid 1px;
+      border: rgb(201, 201, 201) solid 1px;
+
       &--image {
         width: 50%;
         //  height: auto;
       }
-      // &--title {
-      // }
+      &--tittle {
+        width: 50%;
+        padding: 10px;
+      }
     }
   }
 }
 
 @media only screen and (min-width: 700px) {
   .artist-list {
-    //    padding: 0 5%;
-    &--search {
-      display: block;
-      margin-top: 30px;
+    font-size: 1rem;
+    // &--search {
+    //   display: block;
+    //   margin-top: 30px;
+    // }
+
+    &--grid {
+      .artist-box {
+        //background-color: $color-light-gray;
+        margin-top: 0px;
+      }
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(2, 49%);
+      grid-template-rows: repeat(auto, auto);
     }
   }
 }
 
 @media only screen and (min-width: 1020px) {
   .artist-list {
-    // padding: 0 5%;
     font-size: 1.1rem;
-    &--search {
-      margin-top: 40px;
-    }
-    p {
-      margin-bottom: 5px;
+    &--grid {
+      grid-gap: 30px;
+     // grid-template-columns: repeat(3, 32%);
     }
   }
+  &--search {
+    margin-top: 40px;
+  }
+  // p {
+  //   margin-bottom: 5px;
+  // }
 }

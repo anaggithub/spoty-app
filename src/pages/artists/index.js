@@ -8,7 +8,7 @@ import useArtistID from "../../context/artist-id";
 
 import { Link } from "react-router-dom";
 
-const ArtistList = () => {
+const Artists = () => {
   const { artists } = useArtists();
   const { setArtistID } = useArtistID();
 
@@ -29,16 +29,14 @@ const ArtistList = () => {
           {artists &&
             artists.map((elem) => {
               if (elem.images[0]) {
-                console.log(elem.id, typeof elem.id);
+                // console.log(elem.id, typeof elem.id);
                 return (
                   <Link to="/home/artists/artist" key={elem.id}>
                     <ArtistBox
                       name={elem.name}
                       url={elem.images[0].url}
                       key={elem.id}
-                      onClick={(e) =>  setArtistID(elem.id)
-                      //  console.log("entro al click", elem.id) 
-                      }
+                      onClick={(e) => setArtistID(elem.id)}
                     />
                   </Link>
                 );
@@ -59,4 +57,4 @@ const ArtistBox = ({ url, name, onClick }) => {
   );
 };
 
-export default ArtistList;
+export default Artists;

@@ -2,7 +2,6 @@
 
 .album {
   @include flex-column-box;
-  margin-top: 80px;
   padding: 0 1%;
   text-align: left;
   font-size: 0.8rem;

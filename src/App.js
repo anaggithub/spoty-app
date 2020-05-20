@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./pages/home";
-import ArtistList from "./pages/artist-list";
-import Artist from "./pages/artist";
+import Artists from "./pages/artists";
+import ArtistDetail from "./pages/artist-detail";
 import Album from "./pages/album";
 
 import {
@@ -19,9 +19,9 @@ const App = () => {
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route exact path="/home" component={Home} />
-          <Route exact path="/home/artists" component={ArtistList} />
-          <Route exact path="/home/artists/:artist" component={Artist} />
-          <Route exact path="/home/artists/artist" component={Artist} />
+          <Route exact path="/home/artists" component={Artists} />
+          <Route exact path="/home/artists/:artist" component={ArtistDetail} />
+          <Route exact path="/home/artists/album" component={ArtistDetail} />
           <Route exact path="/home/artists/:artist/:album" component={Album} />
         </Switch>
       </Router>

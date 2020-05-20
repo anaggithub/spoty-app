@@ -8,14 +8,14 @@ const myHeaders = {
   "Content-Type": "application/json",
 };
 
-const callArtistsFetch = async (artist) => {
+const callArtists = async (artist) => {
   let request = new Request(`${HOST}search/?q=${artist}&type=artist`);
   let res = await fetch(request, {
     headers: myHeaders,
   });
 
-  let artists = await res.json();
+  let artists = await res.json();  console.log(artists,typeof artists)
   return artists;
 };
 
-export default callArtistsFetch;
+export default callArtists;

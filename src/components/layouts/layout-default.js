@@ -12,7 +12,7 @@ const DefaultLayout = ({children}) => {
             <div className="default-layout--content">
                 {children}
             </div>
-            <Footer />
+            <Footer classes="default-layout--footer" />
         </div>
     );
 }

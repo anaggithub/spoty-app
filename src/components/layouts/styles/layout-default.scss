@@ -1,10 +1,14 @@
-.default-layout{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
+.default-layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
-    
+  width: 100%;
+  //background-color: yellow;
+  &--footer {
+    //   background-color: yellowgreen;
+    position: absolute;
+    bottom: 0;
+  }
 }

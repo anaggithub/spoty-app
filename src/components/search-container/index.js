@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./index.scss";
 import Input from "../forms/input";
-import callArtistsFetch from "../../services/search-results";
+import callArtists from "../../services/artists";
 import useArtists from "../../context/artists";
 import { Redirect } from "react-router-dom";
 
@@ -26,14 +26,13 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
       setSearchErrorMessage("Solo se aceptan letras.");
       setSearchError(true);
     } else {
-      const res = await callArtistsFetch(search);
-      console.log(res);
+      const res = await callArtists(search);
+      //console.log(res);
       let data = res.artists.items;
       //console.log(data, typeof data);
 
       if (!data || !data.length) {
         //ESTA VALIDACION NO ENTIENDO POR QUE SOLO FUNCIONA CON .LENGHT :(
-        console.log("plis entra aqui!");
         setSearchErrorMessage("No se encontraron resultados.");
         setSearchError(true);
       } else {
