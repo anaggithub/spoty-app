@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./index.scss";
 
 import Layout from "../../components/layouts";
@@ -6,21 +6,18 @@ import SearchContainer from "../../components/search-container";
 import useArtists from "../../context/artists";
 import useArtistID from "../../context/artist-id";
 
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ArtistList = () => {
   const { artists } = useArtists();
   const { setArtistID } = useArtistID();
-  const [redirect, setRedirect] = useState(false);
 
   return (
     <Layout>
       <section className="artist-list">
         <div className="artist-list--info">
           <h2 className="artist-list--title">Artists</h2>
-          <p className="artist-list--paragraph">
-            You are currently searching: 
-          </p>
+          <p className="artist-list--paragraph">You are currently searching:</p>
           <SearchContainer
             classes="artist-list--search"
             inputPlaceholder="Type the name of your favourite artist"
@@ -30,28 +27,32 @@ const ArtistList = () => {
 
         <div className="artist-list--grid">
           {artists &&
-            artists.map((e) => {
-              if (e.images[0]) {
+            artists.map((elem) => {
+              if (elem.images[0]) {
+                console.log(elem.id, typeof elem.id);
                 return (
-                  <ArtistBox name={e.name} key={e.id} url={e.images[0].url }  
-                //    onClick={event => {
-                //     setArtistID(e.id)
-                  
-                // }}
-                 />
+                  <Link to="/home/artists/artist" key={elem.id}>
+                    <ArtistBox
+                      name={elem.name}
+                      url={elem.images[0].url}
+                      key={elem.id}
+                      onClick={(e) =>  setArtistID(elem.id)
+                      //  console.log("entro al click", elem.id) 
+                      }
+                    />
+                  </Link>
                 );
               }
             })}
         </div>
       </section>
-      {redirect && <Redirect to="/home/artists/album" />}
     </Layout>
   );
 };
 
-const ArtistBox = ({ url, name }) => {
+const ArtistBox = ({ url, name, onClick }) => {
   return (
-    <div className="artist-box">
+    <div className="artist-box" onClick={onClick}>
       <img className="artist-box--image" alt="artist logo" src={url} />
       <h3 className="artist-box--tittle">{name}</h3>
     </div>

@@ -17,7 +17,7 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
   const handleSubmit = async (e) => {
     setSearchError(false);
     e.preventDefault();
-        let letters = /^[A-Za-z ]+$/;
+    let letters = /^[A-Za-z ]+$/;
 
     if (search.trim() === "") {
       setSearchErrorMessage("Ingrese un artista para buscar!!");
@@ -27,7 +27,7 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
       setSearchError(true);
     } else {
       const res = await callArtistsFetch(search);
-      console.log(res)
+      console.log(res);
       let data = res.artists.items;
       //console.log(data, typeof data);
 
@@ -50,12 +50,8 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
   };
 
   return (
-    <div>
-      <form
-        className={`search-container ${classes}`}
-        method="get"
-        onSubmit={handleSubmit}
-      >
+    <div className={`search-container ${classes}`}>
+      <form method="get" onSubmit={handleSubmit}>
         <Input
           name="search"
           type="text"
