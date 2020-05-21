@@ -5,9 +5,7 @@ const UseArtistID = () => {
   const [appStorage, setStorage] = useContext(AppConsumer);
 
   const setArtistID = (artistID) => {
-      window.localStorage.setItem("artistID", JSON.stringify(artistID));
-    // const artistsLocalStorage = window.localStorage.getItem("myArtists");
-    // console.log(artistsLocalStorage);
+    window.localStorage.setItem("artistID", artistID);
     setStorage((prevState) => ({ ...prevState, artistID }));
   };
   return {

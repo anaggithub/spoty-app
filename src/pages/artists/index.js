@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.scss";
 
 import Layout from "../../components/layouts";
@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 
 const Artists = () => {
   const { artists } = useArtists();
-  const { setArtistID } = useArtistID();
-
+  const { artistID, setArtistID } = useArtistID();
+  console.log(artistID, "en page artists, accediendo al artist id de context");
   return (
     <Layout>
       <section className="artist-list">
@@ -41,8 +41,7 @@ const Artists = () => {
                   </Link>
                 );
               }
-            })
-            }
+            })}
         </div>
       </section>
     </Layout>

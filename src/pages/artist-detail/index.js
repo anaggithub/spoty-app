@@ -8,26 +8,30 @@ import callArtistByID, { callArtistAlbums } from "../../services/artist-detail";
 import { Link } from "react-router-dom";
 
 const ArtistDetail = () => {
-
-
   const { artistID } = useArtistID();
+  console.log(artistID, typeof artistID, "artist id desde artist-detail");
+
   const [artist, setArtist] = useState([]);
   const [artistGenres, setArtistGenres] = useState([]);
   const [artistImage, setArtistImage] = useState([]);
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      let res1 = await callArtistByID(artistID);
+
+     async function fetchData() {
+      let res1 = await callArtistByID(
+        artistID || window.localStorage.getItem("artistID")
+      );
       setArtist(res1);
       setArtistGenres(res1.genres);
       setArtistImage(res1.images[0]);
-
-      let res2 = await callArtistAlbums(artistID);
+      let res2 = await callArtistAlbums(
+        artistID || window.localStorage.getItem("artistID")
+      );
       setAlbums(res2);
     }
     fetchData();
-  }, []);
+  }, [artistID]);
 
   return (
     <DefaultLayout>

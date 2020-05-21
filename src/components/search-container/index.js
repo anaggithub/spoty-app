@@ -4,6 +4,7 @@ import Input from "../forms/input";
 import callArtists from "../../services/artists";
 import useArtists from "../../context/artists";
 import { Redirect } from "react-router-dom";
+// import useArtistID from "../../context/artist-id";
 
 const SearchContainer = ({ classes, inputPlaceholder }) => {
   const [search, setSearch] = useState("");
@@ -13,6 +14,9 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
   const [searchErrorMessage, setSearchErrorMessage] = useState("");
 
   const { setArtists } = useArtists();
+  // const { artistID } = useArtistID();
+
+//console.log(artistID)
 
   const handleSubmit = async (e) => {
     setSearchError(false);
