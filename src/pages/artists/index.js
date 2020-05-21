@@ -41,7 +41,8 @@ const Artists = () => {
                   </Link>
                 );
               }
-            })}
+            })
+            }
         </div>
       </section>
     </Layout>

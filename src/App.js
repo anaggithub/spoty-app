@@ -23,6 +23,7 @@ const App = () => {
           <Route exact path="/home/artists/:artist" component={ArtistDetail} />
           <Route exact path="/home/artists/album" component={ArtistDetail} />
           <Route exact path="/home/artists/:artist/:album" component={Album} />
+          <Route exact path="/home/artists/artist/album" component={Album} />
         </Switch>
       </Router>
     </AppProvider>

@@ -5,20 +5,24 @@ import DefaultLayout from "../../components/layouts";
 import useArtistID from "../../context/artist-id";
 import callArtistByID, { callArtistAlbums } from "../../services/artist-detail";
 
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ArtistDetail = () => {
+  const { artistID } = useArtistID();
   const [artist, setArtist] = useState([]);
   const [artistGenres, setArtistGenres] = useState([]);
   const [artistImage, setArtistImage] = useState([]);
-  const { artistID } = useArtistID();
+  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      let res = await callArtistByID(artistID);
-      setArtist(res);
-      setArtistGenres(res.genres);
-      setArtistImage(res.images[0]);
+      let res1 = await callArtistByID(artistID);
+      setArtist(res1);
+      setArtistGenres(res1.genres);
+      setArtistImage(res1.images[0]);
+
+      let res2 = await callArtistAlbums(artistID);
+      setAlbums(res2);
     }
     fetchData();
   }, []);
@@ -46,9 +50,39 @@ const ArtistDetail = () => {
           Home > Artists > {artist && artist.name}
         </p>
 
-        <div className="artist-detail--grid">LISTA DE ALBUMS AQUI</div>
+        <div className="artist-detail--grid">
+          {albums &&
+            albums.map((elem) => {
+              if (elem.images[0]) {
+                // console.log(elem.id, typeof elem.id);
+                return (
+                  <Link to="/home/artists/album" key={elem.id}>
+                    <AlbumBox
+                      name={elem.name}
+                      url={elem.images[0].url}
+                      year={elem.release_date}
+                      key={elem.id}
+                      //      onClick={(e) => setArtistID(elem.id)}
+                    />
+                  </Link>
+                );
+              }
+            })}
+        </div>
       </section>
     </DefaultLayout>
+  );
+};
+
+const AlbumBox = ({ url, name, year, onClick }) => {
+  return (
+    <div className="album-box" onClick={onClick}>
+      <img className="album-box--image" alt="album logo" src={url} />
+      <div className="album-box--content">
+        <h3 className="album-box--name">{name}</h3>
+        <p className="album-box--year">{year}</p>
+      </div>
+    </div>
   );
 };
 

@@ -14,7 +14,8 @@ const callArtists = async (artist) => {
     headers: myHeaders,
   });
 
-  let artists = await res.json();  console.log(artists,typeof artists)
+  let artists = await res.json();
+  //console.log(artists,typeof artists)
   return artists;
 };
 

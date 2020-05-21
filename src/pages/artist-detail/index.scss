@@ -2,15 +2,17 @@
 
 .artist-detail {
   @include flex-column-box;
+  margin-top: 30px;
+  margin-bottom: 100px;
   padding: 0 5%;
   font-size: 0.8rem;
   text-align: left;
-//  background-color: pink;
+  //  background-color: pink;
   &--info {
     display: flex;
     width: 100%;
     margin-bottom: 20px;
- //   background-color: yellow;
+    //   background-color: yellow;
 
     &--logo {
       width: 80px;
@@ -33,7 +35,7 @@
   &--grid {
     @include flex-column-box;
     margin-top: 30px;
-    .artist-box {
+    .album-box {
       //background-color: $color-light-gray;
       margin-top: 20px;
       display: flex;
@@ -41,11 +43,17 @@
 
       &--image {
         width: 50%;
+     //     height: 50%;
+      }
+
+      &--content {
+        text-align: left;
+        padding: 10px;
         //  height: auto;
       }
-      &--tittle {
-        width: 50%;
-        padding: 10px;
+      &--name {
+        // width: 50%;
+        margin-bottom: 10px;
       }
     }
   }
@@ -56,14 +64,13 @@
     font-size: 1rem;
 
     &--info {
-   
       &--logo {
         width: 180px;
-      }}
-
+      }
+    }
 
     &--grid {
-      .artist-box {
+      .album-box {
         //background-color: $color-light-gray;
         margin-top: 0px;
       }
