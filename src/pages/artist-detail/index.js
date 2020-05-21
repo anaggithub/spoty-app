@@ -8,6 +8,8 @@ import callArtistByID, { callArtistAlbums } from "../../services/artist-detail";
 import { Link } from "react-router-dom";
 
 const ArtistDetail = () => {
+
+
   const { artistID } = useArtistID();
   const [artist, setArtist] = useState([]);
   const [artistGenres, setArtistGenres] = useState([]);
@@ -56,7 +58,7 @@ const ArtistDetail = () => {
               if (elem.images[0]) {
                 // console.log(elem.id, typeof elem.id);
                 return (
-                  <Link to="/home/artists/album" key={elem.id}>
+                  <Link to="/home/artists/artist/album" key={elem.id}>
                     <AlbumBox
                       name={elem.name}
                       url={elem.images[0].url}
