@@ -6,14 +6,24 @@ const AppProvider = ({ children }) => {
   const [appStorage, setStorage] = useState({
     artists: [],
     artistID: "",
+    albumID: "",
     favorites: {},
   });
 
   useEffect(() => {
     const artists = window.localStorage.getItem("artists");
-  //  console.log(artists, "artistas del storage");
+    //  console.log(artists, "artistas del storage");
     const artistID = window.localStorage.getItem("artistID");
-  //  console.log(artistID, "artistID del storage");
+    //  console.log(artistID, "artistID del storage");
+    const albumID = window.localStorage.getItem("albumID");
+    console.log(albumID, "Accediendo a local storage AlbumID desde Context");
+    
+    if (artists) {
+      setStorage((prevState) => ({
+        ...prevState,
+        artists: window.JSON.parse(artists),
+      }));
+    }
 
     if (artistID) {
       setStorage((prevState) => ({
@@ -21,12 +31,16 @@ const AppProvider = ({ children }) => {
         artistID: artistID,
       }));
     }
-    
-    if (artists)
+
+    if (albumID) {
       setStorage((prevState) => ({
         ...prevState,
-        artists: window.JSON.parse(artists),
+        albumID: albumID,
       }));
+    }
+
+
+
   }, []);
 
   return (

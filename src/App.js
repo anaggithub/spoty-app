@@ -2,7 +2,7 @@ import React from "react";
 import Home from "./pages/home";
 import Artists from "./pages/artists";
 import ArtistDetail from "./pages/artist-detail";
-import Album from "./pages/album";
+import Album from "./pages/album-detail";
 
 import {
   BrowserRouter as Router,

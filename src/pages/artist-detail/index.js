@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./index.scss";
 import DefaultLayout from "../../components/layouts";
 
+import useAlbumID from "../../context/album-id";
 import useArtistID from "../../context/artist-id";
 import callArtistByID, { callArtistAlbums } from "../../services/artist-detail";
 
 import { Link } from "react-router-dom";
 
 const ArtistDetail = () => {
+
   const { artistID } = useArtistID();
-  console.log(artistID, typeof artistID, "artist id desde artist-detail");
+  //console.log(artistID, typeof artistID, "artist id desde artist-detail");
+  const { setAlbumID } = useAlbumID();
 
   const [artist, setArtist] = useState([]);
   const [artistGenres, setArtistGenres] = useState([]);
@@ -17,8 +20,7 @@ const ArtistDetail = () => {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-
-     async function fetchData() {
+    async function fetchData() {
       let res1 = await callArtistByID(
         artistID || window.localStorage.getItem("artistID")
       );
@@ -60,7 +62,7 @@ const ArtistDetail = () => {
           {albums &&
             albums.map((elem) => {
               if (elem.images[0]) {
-                // console.log(elem.id, typeof elem.id);
+                //   console.log(elem.id, typeof elem.id);
                 return (
                   <Link to="/home/artists/artist/album" key={elem.id}>
                     <AlbumBox
@@ -68,7 +70,7 @@ const ArtistDetail = () => {
                       url={elem.images[0].url}
                       year={elem.release_date}
                       key={elem.id}
-                      //      onClick={(e) => setArtistID(elem.id)}
+                      onClick={(e) => setAlbumID(elem.id)}
                     />
                   </Link>
                 );

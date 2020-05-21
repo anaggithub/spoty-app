@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Artists = () => {
   const { artists } = useArtists();
   const { artistID, setArtistID } = useArtistID();
-  console.log(artistID, "en page artists, accediendo al artist id de context");
+//  console.log(artistID, "en page artists, accediendo al artist id de context");
   return (
     <Layout>
       <section className="artist-list">

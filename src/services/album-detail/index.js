@@ -8,8 +8,8 @@ const myHeaders = {
   "Content-Type": "application/json",
 };
 
-const callArtistByID = async (id) => {
-  let request = new Request(`${HOST}artists/${id}`);
+const callAlbumByID = async (id) => {
+  let request = new Request(`${HOST}albums/${id}`);
   let res = await fetch(request, {
     headers: myHeaders,
   });
@@ -19,16 +19,17 @@ const callArtistByID = async (id) => {
   return artistDetail;
 };
 
-const callArtistAlbums = async (id) => {
-  let request = new Request(`${HOST}artists/${id}/albums`);
+const callAlbumSongs = async (id) => {
+  let request = new Request(`${HOST}artists/${id}/tracks`);
   let res = await fetch(request, {
     headers: myHeaders,
   });
 
-  let albums = await res.json();
-  console.log(albums.items, typeof albums);
-  return albums.items;
+  let artistDetail = await res.json();
+ // console.log(artistDetail, typeof artistDetail);
+  return artistDetail;
 };
 
-export default callArtistByID;
-export { callArtistAlbums };
+export default callAlbumByID;
+export { callAlbumSongs };
+
