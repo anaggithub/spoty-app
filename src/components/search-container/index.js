@@ -4,7 +4,6 @@ import Input from "../forms/input";
 import callArtists from "../../services/artists";
 import useArtists from "../../context/artists";
 import { Redirect } from "react-router-dom";
-// import useArtistID from "../../context/artist-id";
 
 const SearchContainer = ({ classes, inputPlaceholder }) => {
   const [search, setSearch] = useState("");
@@ -14,9 +13,7 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
   const [searchErrorMessage, setSearchErrorMessage] = useState("");
 
   const { setArtists } = useArtists();
-  // const { artistID } = useArtistID();
-
-//console.log(artistID)
+  //console.log(artistID)
 
   const handleSubmit = async (e) => {
     setSearchError(false);
@@ -31,18 +28,21 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
       setSearchError(true);
     } else {
       const res = await callArtists(search);
-      //console.log(res);
-      let data = res.artists.items;
-      //console.log(data, typeof data);
-
-      if (!data || !data.length) {
-        //ESTA VALIDACION NO ENTIENDO POR QUE SOLO FUNCIONA CON .LENGHT :(
-        setSearchErrorMessage("No se encontraron resultados.");
+    
+      if (res.error) {
+        setSearchErrorMessage("Error: " + res.error.message);
         setSearchError(true);
+
       } else {
-        //  console.log("entro al else");
-        setArtists(data);
-        setRedirect(true);
+        let data = res.artists.items;
+        if (!data || !data.length) {
+          //ESTA VALIDACION NO ENTIENDO POR QUE SOLO FUNCIONA CON .LENGHT :(
+          setSearchErrorMessage("No se encontraron resultados.");
+          setSearchError(true);
+        } else {
+          setArtists(data);
+          setRedirect(true);
+        }
       }
     }
   };
