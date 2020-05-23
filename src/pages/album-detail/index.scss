@@ -35,25 +35,26 @@
   &--grid {
     @include flex-column-box;
     margin-top: 30px;
-    .album-box {
-      //background-color: $color-light-gray;
-      margin-top: 20px;
-      display: flex;
+    text-align: left;
+    .CD-Box {
+      margin-bottom: 40px;
       border: rgb(201, 201, 201) solid 1px;
 
-      &--image {
-        width: 50%;
-        //     height: 50%;
-      }
-
-      &--content {
-        text-align: left;
-        padding: 10px;
-        //  height: auto;
-      }
       &--name {
-        // width: 50%;
-        margin-bottom: 10px;
+        padding: 5px;
+        border-bottom: rgb(201, 201, 201) solid 1px;
+      }
+      &--song {
+        display: flex;
+        padding: 5px;
+      }
+      &--player {
+        text-align: center;
+        background-color: #f1f3f4;
+
+        audio {
+          width: 100%;
+        }
       }
     }
   }
@@ -70,14 +71,10 @@
     }
 
     &--grid {
-      .album-box {
+      .CD-Box {
         //background-color: $color-light-gray;
         margin-top: 0px;
       }
-      display: grid;
-      grid-gap: 20px;
-      grid-template-columns: repeat(2, 49%);
-      grid-template-rows: repeat(auto, auto);
     }
   }
 }
@@ -85,11 +82,5 @@
 @media only screen and (min-width: 1020px) {
   .album-detail {
     font-size: 1.1rem;
-    &--grid {
-      grid-gap: 30px;
-    }
-    // p {
-    //   margin-bottom: 5px;
-    // }
   }
 }

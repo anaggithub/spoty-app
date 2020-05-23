@@ -2,12 +2,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-
   width: 100%;
-  //background-color: yellow;
+  min-height: 100vh;
+ // background-color: yellow;
   &--footer {
-    //   background-color: yellowgreen;
     position: absolute;
     bottom: 0;
   }

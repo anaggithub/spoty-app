@@ -1,6 +1,6 @@
 const config = {
   API_SPOTIFY: {
-    TOKEN: "BQBZCEp4faNimVdr_diBZrcP3sLXdbqwOXNDrG4UNfHxXNQLt2gKP0uNpPDjVYBcEj_bz9xuGKyE8HtXauy5Fs-v7G3jGotCqjUIHWicWzo-k1FENfw0vuW1goBJ8wYcEj_YfZKDtdTZ7dmRJOhFVKBGW094tXjuhMxTE2WTMUSTBEAq",
+    TOKEN: "BQDfPH-UkmzsyzwIe3gIvfsIPPiK8PdhF4AMv8QbOlRr3sKFoJnSfGZgk5h2uhmsgBX4TNTSsh8IssyaMNObWTt-Nw1RlZwp7r6UwWtRUGfWtTrwAFdcklmky5nLB4IOh56IrB0877uHIoMclwlXmU5_EmG2rVyCldBqmw4bVe3u5KBf",
     HOST: "https://api.spotify.com/v1/",
   },
 };

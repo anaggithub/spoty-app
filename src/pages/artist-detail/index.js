@@ -75,6 +75,7 @@ const ArtistDetail = () => {
                   </Link>
                 );
               }
+              return null
             })}
         </div>
       </section>

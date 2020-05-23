@@ -12,12 +12,11 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     const artists = window.localStorage.getItem("artists");
-    //  console.log(artists, "artistas del storage");
     const artistID = window.localStorage.getItem("artistID");
     //  console.log(artistID, "artistID del storage");
     const albumID = window.localStorage.getItem("albumID");
-    console.log(albumID, "Accediendo a local storage AlbumID desde Context");
-    
+    //  console.log(albumID, "Accediendo a local storage AlbumID desde Context");
+
     if (artists) {
       setStorage((prevState) => ({
         ...prevState,

@@ -26,7 +26,7 @@ const callArtistAlbums = async (id) => {
   });
 
   let albums = await res.json();
-  console.log(albums.items, typeof albums);
+  //console.log(albums.items, typeof albums);
   return albums.items;
 };
 
