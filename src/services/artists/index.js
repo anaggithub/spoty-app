@@ -1,4 +1,3 @@
-//import newsMock from './mock.json';
 import config from "../../config";
 
 const { HOST, TOKEN } = config.API_SPOTIFY;

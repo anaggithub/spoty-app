@@ -11,7 +11,6 @@ const Header = () => {
       ? search[0].classList.remove("active")
       : search[0].classList.add("active");
   };
-
   return (
     <header className="header">
       <nav className="header--nav container">
@@ -28,7 +27,26 @@ const Header = () => {
       ></SearchContainer>
     </header>
   );
-};
+ };
+
+
+//   return (
+//     <header className="header">
+//       <nav className="header--nav container">
+//         <Link to="/home/">
+//           <APILogo className="header--logo" />
+//         </Link>
+//         <div className="header--icon" onClick={handleClick}>
+//           <i className="fas fa-search "></i>
+//         </div>
+//       </nav>
+//       <SearchContainer
+//         classes="header--search"
+//         inputPlaceholder="Type the name of your favourite artist"
+//       ></SearchContainer>
+//     </header>
+//   );
+// };
 
 export default Header;
 

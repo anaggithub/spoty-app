@@ -5,34 +5,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: $font-secondary;
+ // font-family: $font-secondary;
   height: 80px;
   padding: 0 1%;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   // background-color: pink;
 
-  &--logo {
-    margin-right: 5px;
-    img {
-      width: 30px;
-    }
-  }
 }
 
 @media only screen and (min-width: 768px) {
   .footer {
-    font-size: 1rem;
-    &--logo {
-      margin-right: 20px;
-      img {
-        width: 30px;
-      }
-    }
+    font-size: 0.9rem;
   }
 }
 
-@media only screen and (min-width: 1024px) {
-  .footer {
-    font-size: 1.1rem;
-  }
-}
+

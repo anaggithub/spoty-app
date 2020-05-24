@@ -30,7 +30,13 @@ const ArtistDetail = () => {
       let res2 = await callArtistAlbums(
         artistID || window.localStorage.getItem("artistID")
       );
-      setAlbums(res2);
+
+      let albumWithImages = res2.filter(elem => elem.images[0])
+      // setAlbums(res2);
+      //console.log(res2)
+      // console.log(albumWithImages)
+      setAlbums(albumWithImages)
+      //   setAlbums(res2)
     }
     fetchData();
   }, [artistID]);
@@ -61,21 +67,17 @@ const ArtistDetail = () => {
         <div className="artist-detail--grid">
           {albums &&
             albums.map((elem) => {
-              if (elem.images[0]) {
-                //   console.log(elem.id, typeof elem.id);
-                return (
-                  <Link to="/home/artists/artist/album" key={elem.id}>
-                    <AlbumBox
-                      name={elem.name}
-                      url={elem.images[0].url}
-                      year={elem.release_date}
-                      key={elem.id}
-                      onClick={(e) => setAlbumID(elem.id)}
-                    />
-                  </Link>
-                );
-              }
-              return null
+              return (
+                <Link to="/home/artists/artist/album" key={elem.id}>
+                  <AlbumBox
+                    name={elem.name}
+                    url={elem.images[0].url}
+                    year={elem.release_date}
+                    key={elem.id}
+                    onClick={(e) => setAlbumID(elem.id)}
+                  />
+                </Link>
+              );
             })}
         </div>
       </section>

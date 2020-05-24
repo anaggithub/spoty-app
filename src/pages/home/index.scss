@@ -21,7 +21,7 @@
 
   &--search {
     margin-top: 30px;
-   // background-color: yellow;
+    // background-color: yellow;
     .input--row {
       justify-content: center;
     }
@@ -41,6 +41,34 @@
   }
 }
 
+.favorites {
+  @include flex-column-box;
+  padding: 0 5%;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  text-align: left;
+  &--box {
+    margin-bottom: 40px;
+    border: rgb(201, 201, 201) solid 1px;
+
+    &--artist {
+      padding: 5px;
+      border-bottom: rgb(201, 201, 201) solid 1px;
+    }
+    &--song {
+      padding: 5px;
+    }
+    &--player {
+      text-align: center;
+      background-color: #f1f3f4;
+
+      audio {
+        width: 100%;
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 700px) {
   .hero {
     padding: 0 5%;
@@ -55,9 +83,8 @@
     padding: 0 5%;
     font-size: 1.1rem;
     &--search {
-    //  padding-left: 10%;
+      //  padding-left: 10%;
       margin-top: 40px;
-    
     }
     p {
       margin-bottom: 5px;

@@ -28,7 +28,7 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
       setSearchError(true);
     } else {
       const res = await callArtists(search);
-    
+
       if (res.error) {
         setSearchErrorMessage("Error: " + res.error.message);
         setSearchError(true);
@@ -49,7 +49,6 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    //    console.log(search)
   };
 
   return (

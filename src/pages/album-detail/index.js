@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
 import Layout from "../../components/layouts";
-
 import useAlbumID from "../../context/album-id";
+import useFavorites from "../../context/favorites";
 import callAlbumByID, { callAlbumSongs } from "../../services/album-detail";
 
 const Album = () => {
   const { albumID } = useAlbumID();
-
+  const { favorites, setFavorites } = useFavorites();
+  console.log(favorites)
   console.log(albumID, typeof albumID, "album id desde album-detail");
 
   const [album, setAlbum] = useState([]);
@@ -35,14 +36,21 @@ const Album = () => {
         return { ...accumulator, [disc_number]: [...previousSongs, song] };
       }, {});
 
-      //   console.log(songsByCd)
+      console.log(songsByCd)
       setSongsByCD(songsByCd);
 
     }
     fetchData();
   }, [albumID]);
 
-
+  const handleClick = (id) => {
+   // e.preventDefault();
+    console.log(favorites, Array.isArray(favorites))
+    let newfavorites = favorites
+    newfavorites.push(id)
+    console.log(newfavorites)
+    setFavorites(newfavorites)
+  }
 
   return (
     <Layout>
@@ -73,7 +81,7 @@ const Album = () => {
                     <div key={song.id + 1}>
                       <div className="CD-Box--song"  >
                         <p className="CD-Box--song--name" >{song.name}</p>
-                        <div className="CD-Box--song--isFav"> F </div>
+                        <div className="CD-Box--song--isFav" onClick={e => handleClick(song.id)}> F </div>
                       </div>
                       {song.preview_url &&
                         <div className="CD-Box--player">

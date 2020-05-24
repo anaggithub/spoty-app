@@ -1,19 +1,31 @@
-import React  from "react";
+import React, { useState, useEffect } from "react";
 import "./index.scss";
-
 import Layout from "../../components/layouts";
 import SearchContainer from "../../components/search-container";
-
-//import useArtists from "../../context/artists";
-
-//import { Link } from "react-router-dom";
+import useFavorites from "../../context/favorites";
+import callTracks from "../../services/favorites";
 
 const Home = () => {
- //  const [favourites, setFavourites] = useState([]);
- //const { artists } = useArtists();
+  const { favorites } = useFavorites();
+ // console.log(favorites, "Accediendo a favoritos desde home")
+  const [favoriteSongs, setFavoriteStongs] = useState([]);
 
- 
- //console.log(artists)
+  useEffect(() => {
+    // acá no sé cómo validar que si no hay favoritos, no llame a fetch.
+   // console.log(favorites, typeof favorites) // por qué es type object si yo defini que es un array ..
+
+    async function fetchData() {
+      let res = await callTracks(favorites);
+      console.log(res)
+      const songsByArtist = res.reduce((accumulator, song) => {
+        const previousSongs = accumulator[song.artists[0].name] || [];
+        return { ...accumulator, [song.artists[0].name]: [...previousSongs, song] };
+      }, {});
+//      console.log(songsByArtist)
+      setFavoriteStongs(songsByArtist);
+    }
+    fetchData();
+  }, [favorites]);
 
   return (
     <Layout>
@@ -31,7 +43,27 @@ const Home = () => {
           inputPlaceholder="Type the name of your favourite artist"
         />
       </main>
-      <section className="favourites"></section>
+      <section className="favorites">
+        {favoriteSongs && <h2>Favorites: </h2>}
+        { favoriteSongs &&
+          Object.keys(favoriteSongs).map(key => {
+            return (
+              <div className="favorites--box" key={key + 1}>
+                <h4 className="favorites--box--artist" >{key}</h4>
+                {favoriteSongs[key].map(song =>
+                  <div key={song.id + 1}>
+                    <p className="favorites--box--song" >{song.name}</p>
+                    {song.preview_url &&
+                      <div className="favorites--box--player">
+                        <audio controls src={song.preview_url}></audio>
+                      </div>}
+                  </div>
+                )}
+              </div>
+            )
+          })
+        }
+      </section>
     </Layout>
   );
 };
