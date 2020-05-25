@@ -27,6 +27,7 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
       setSearchErrorMessage("Solo se aceptan letras.");
       setSearchError(true);
     } else {
+      
       const res = await callArtists(search);
 
       if (res.error) {
@@ -34,6 +35,7 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
         setSearchError(true);
 
       } else {
+        console.log(res)
         let data = res.artists.items;
         if (!data || !data.length) {
           //ESTA VALIDACION NO ENTIENDO POR QUE SOLO FUNCIONA CON .LENGHT :(

@@ -1,11 +1,9 @@
 import React from "react";
 import "./index.scss";
-
 import Layout from "../../components/layouts";
 import SearchContainer from "../../components/search-container";
 import useArtists from "../../context/artists";
 import useArtistID from "../../context/artist-id";
-
 import { Link } from "react-router-dom";
 
 const Artists = () => {

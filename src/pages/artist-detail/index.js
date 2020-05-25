@@ -1,44 +1,56 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
 import DefaultLayout from "../../components/layouts";
-
 import useAlbumID from "../../context/album-id";
 import useArtistID from "../../context/artist-id";
 import callArtistByID, { callArtistAlbums } from "../../services/artist-detail";
-
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const ArtistDetail = () => {
 
   const { artistID } = useArtistID();
-  //console.log(artistID, typeof artistID, "artist id desde artist-detail");
   const { setAlbumID } = useAlbumID();
-
   const [artist, setArtist] = useState([]);
   const [artistGenres, setArtistGenres] = useState([]);
   const [artistImage, setArtistImage] = useState([]);
   const [albums, setAlbums] = useState([]);
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
-      let res1 = await callArtistByID(
-        artistID || window.localStorage.getItem("artistID")
-      );
-      setArtist(res1);
-      setArtistGenres(res1.genres);
-      setArtistImage(res1.images[0]);
-      let res2 = await callArtistAlbums(
-        artistID || window.localStorage.getItem("artistID")
-      );
+    console.log(artistID)
+    if (artistID) {
+      async function fetchData() {
+        let res1 = await callArtistByID(
+          artistID || window.localStorage.getItem("artistID")
+        );
 
-      let albumWithImages = res2.filter(elem => elem.images[0])
-      // setAlbums(res2);
-      //console.log(res2)
-      // console.log(albumWithImages)
-      setAlbums(albumWithImages)
-      //   setAlbums(res2)
+        if (res1.error) {
+          console.log("Error en el fetch de artista por ID: " + res1.error.message + ". Redirigiendo a home");
+          setRedirect(true);
+        }
+        else {
+          setArtist(res1);
+          setArtistGenres(res1.genres);
+          setArtistImage(res1.images[0]);
+        }
+
+        let res2 = await callArtistAlbums(
+          artistID || window.localStorage.getItem("artistID")
+        );
+        if (res2.error) {
+          console.log("Error en el fetch de albumes por Artista: " + res2.error.message + ". Redirigiendo a home");
+          setRedirect(true);
+        }
+        else {
+          let albumWithImages = res2.items.filter(elem => elem.images[0])
+          setAlbums(albumWithImages)
+        }
+      }
+      fetchData();
     }
-    fetchData();
+    else{
+      setRedirect(true);
+    }
   }, [artistID]);
 
   return (
@@ -81,6 +93,7 @@ const ArtistDetail = () => {
             })}
         </div>
       </section>
+      {redirect && <Redirect to="/home" />}
     </DefaultLayout>
   );
 };

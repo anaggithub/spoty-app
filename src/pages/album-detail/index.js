@@ -4,48 +4,60 @@ import Layout from "../../components/layouts";
 import useAlbumID from "../../context/album-id";
 import useFavorites from "../../context/favorites";
 import callAlbumByID, { callAlbumSongs } from "../../services/album-detail";
+import { Redirect } from "react-router-dom";
 
 const Album = () => {
   const { albumID } = useAlbumID();
   const { favorites, setFavorites } = useFavorites();
-  console.log(favorites)
-  console.log(albumID, typeof albumID, "album id desde album-detail");
 
   const [album, setAlbum] = useState([]);
   const [albumArtist, setAlbumArtist] = useState([]);
   const [albumImage, setAlbumImage] = useState([]);
   const [songsByCD, setSongsByCD] = useState([]);
 
+  const [redirect, setRedirect] = useState(false);
+
   useEffect(() => {
-    async function fetchData() {
-      let res1 = await callAlbumByID(
-        albumID || window.localStorage.getItem("albumID")
-      );
-      setAlbum(res1);
-      setAlbumArtist(res1.artists[0])
-      setAlbumImage(res1.images[0]);
-
-      let res2 = await callAlbumSongs(
-        albumID || window.localStorage.getItem("albumID")
-      );
-
-      const songsByCd = res2.items.reduce((accumulator, song) => {
-        const { disc_number } = song;
-        const previousSongs = accumulator[disc_number] || [];
-
-        return { ...accumulator, [disc_number]: [...previousSongs, song] };
-      }, {});
-
-      console.log(songsByCd)
-      setSongsByCD(songsByCd);
-
+    console.log(albumID)
+     if (albumID) {
+      async function fetchData() {
+        let res1 = await callAlbumByID(
+          albumID || window.localStorage.getItem("albumID")
+        );
+        if (res1.error) {
+          console.log("Error en el fetch de album por ID: " + res1.error.message + ". Redirigiendo a home");
+          setRedirect(true);
+        }
+        else {
+          setAlbum(res1);
+          setAlbumArtist(res1.artists[0])
+          setAlbumImage(res1.images[0]);
+        }
+        let res2 = await callAlbumSongs(
+          albumID || window.localStorage.getItem("albumID")
+        );
+        if (res2.error) {
+          console.log("Error en el fetch de canciones por album: " + res2.error.message + ". Redirigiendo a home");
+          setRedirect(true);
+        }
+        else {
+          const songsByCd = res2.items.reduce((accumulator, song) => {
+            const { disc_number } = song;
+            const previousSongs = accumulator[disc_number] || [];
+            return { ...accumulator, [disc_number]: [...previousSongs, song] };
+          }, {});
+          setSongsByCD(songsByCd);
+        }
+      }
+      fetchData();
     }
-    fetchData();
+    else{
+      console.log("No hay id de album en context, redirigiendo a home")
+      setRedirect(true);
+    }
   }, [albumID]);
 
   const handleClick = (id) => {
-    // e.preventDefault();
-    //   console.log(favorites, Array.isArray(favorites))
     if (favorites.includes(id)) {
       let newfavorites = favorites
       const index = newfavorites.indexOf(id);
@@ -109,6 +121,7 @@ const Album = () => {
           }
         </div>
       </section>
+      {redirect && <Redirect to="/home" />}
     </Layout>
   );
 };

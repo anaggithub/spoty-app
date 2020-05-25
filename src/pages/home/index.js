@@ -10,15 +10,19 @@ const Home = () => {
   const [favoriteSongs, setFavoriteStongs] = useState([]);
 
   useEffect(() => {
-    console.log(favorites)
-    if (favorites.length > 0) {    
+    //console.log(favorites)
+    if (favorites.length > 0) {
       async function fetchData() {
         let res = await callTracks(favorites);
-        const songsByArtist = res.reduce((accumulator, song) => {
-          const previousSongs = accumulator[song.artists[0].name] || [];
-          return { ...accumulator, [song.artists[0].name]: [...previousSongs, song] };
-        }, {});
-        setFavoriteStongs(songsByArtist);
+        if (res.error) {
+          console.log("Error en el fetch de favoritos: " + res.error.message);
+        } else {
+          const songsByArtist = res.tracks.reduce((accumulator, song) => {
+            const previousSongs = accumulator[song.artists[0].name] || [];
+            return { ...accumulator, [song.artists[0].name]: [...previousSongs, song] };
+          }, {});
+          setFavoriteStongs(songsByArtist);
+        }
       }
       fetchData();
     }
@@ -41,7 +45,7 @@ const Home = () => {
         />
       </main>
       <section className="favorites">
-        {favorites.length <0 && <h2>Favorites: </h2>}
+        {favorites.length < 0 && <h2>Favorites: </h2>}
         {favoriteSongs &&
           Object.keys(favoriteSongs).map(key => {
             return (
@@ -61,6 +65,7 @@ const Home = () => {
           })
         }
       </section>
+      
     </Layout>
   );
 };

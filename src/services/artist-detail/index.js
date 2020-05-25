@@ -23,7 +23,8 @@ const callArtistAlbums = async (id) => {
   });
   let albums = await res.json();
   //console.log(albums.items, typeof albums);
-  return albums.items;
+  //return albums.items;
+  return albums;
 };
 
 export default callArtistByID;

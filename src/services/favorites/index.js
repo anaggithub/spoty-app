@@ -9,15 +9,14 @@ const myHeaders = {
 const callTracks = async (tracks) => {
   let tracksString = tracks.join(",")
   let string = `${HOST}tracks/?ids=${tracksString}`
-  //console.log(string)
   let request = new Request(string);
   let res = await fetch(request, {
     headers: myHeaders,
   });
 
   let favorites = await res.json();
-//  console.log(favorites, typeof favorites)
-  return favorites.tracks;
+  //console.log(favorites, typeof favorites)
+  return favorites;
 };
 
 export default callTracks;
