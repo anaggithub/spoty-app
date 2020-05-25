@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
-import Layout from "../../components/layouts";
+import LayoutDefault from "../../components/layouts";
 import SearchContainer from "../../components/search-container";
 import useFavorites from "../../context/favorites";
 import callTracks from "../../services/favorites";
@@ -29,7 +29,7 @@ const Home = () => {
   }, [favorites]);
 
   return (
-    <Layout>
+    <LayoutDefault>
       <main className="hero">
         <div className="hero--info">
           <p>Welcome to</p>
@@ -66,7 +66,7 @@ const Home = () => {
         }
       </section>
       
-    </Layout>
+    </LayoutDefault>
   );
 };
 

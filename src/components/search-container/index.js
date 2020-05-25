@@ -24,7 +24,6 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
       setSearchErrorMessage("Solo se aceptan letras.");
       setSearchError(true);
     } else {
-
       setSearchValue(search);
       setRedirect(true);
     }

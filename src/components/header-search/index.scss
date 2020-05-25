@@ -1,0 +1,95 @@
+@import "../layouts/styles/general-styles.scss";
+
+.header {
+  background-color: $color-secondary;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #c9c9c9;
+  position: relative;
+
+  &--nav {
+    width: 100%;
+    // background-color: orange;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 2rem;
+  }
+  &--icon {
+    padding: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  &--search {
+    
+    input {
+      padding-left: 5px;
+      color: $color-primary;
+      background-color: transparent;
+      width: 200px;
+    }
+    i {
+      padding-right: 10px;
+    }
+    .input--row--error {
+      margin-top: 5px;
+      font-family: $font-secondary;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  // body {
+  //    overflow-x: hidden;
+  // }
+  .header {
+    &--search {
+      // display: none;
+      
+      background-color: $color-secondary;
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      margin-top: 80px;
+      padding-top: 20px;
+      padding-right: 10px;
+      transform: translateX(-100%);
+      //transition: transform 0.5s ease-in;
+
+      .input--row {
+        //max-width: 60%;
+        justify-content: flex-end;
+      }
+      input {
+        background-color: $color-secondary;
+      }
+      i {
+        display: none;
+      }
+    }
+    .active {
+      transform: translateX(0%);
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .header {
+    &--icon {
+      display: none;
+    }
+    &--search {
+      background-color: transparent;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+      margin-right: 20px;
+      padding: 0;
+    }
+  }
+}

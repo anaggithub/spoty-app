@@ -1,14 +1,15 @@
 import React from "react"
 import "./styles/general-styles.scss"
 import "./styles/layout-default.scss"
-import Header from "../header";
+import "./styles/layout-artists.scss"
+import HeaderWithSearch from "../header-search";
 import Footer from "../footer";
 
-const DefaultWithSearch = ({children}) => {
+const LayoutCaca = ({ children }) => {
 
     return (
-        <div className="default-layout container">
-            <Header />
+        <div className="default-layout layout-artists container">
+            <HeaderWithSearch />
             <div className="default-layout--content">
                 {children}
             </div>
@@ -17,4 +18,4 @@ const DefaultWithSearch = ({children}) => {
     );
 }
 
-export default DefaultWithSearch;
+export default LayoutCaca;

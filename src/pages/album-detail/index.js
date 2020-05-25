@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
-import Layout from "../../components/layouts";
+import LayoutWithSearch from "../../components/layouts";
 import useAlbumID from "../../context/album-id";
 import useFavorites from "../../context/favorites";
 import callAlbumByID, { callAlbumSongs } from "../../services/album-detail";
@@ -69,7 +69,7 @@ const Album = () => {
   }
 
   return (
-    <Layout>
+    <LayoutWithSearch>
       <section className="album-detail">
         <div className="album-detail--info">
           <img
@@ -116,7 +116,7 @@ const Album = () => {
         </div>
       </section>
       {redirect && <Redirect to="/home" />}
-    </Layout>
+    </LayoutWithSearch>
   );
 };
 
