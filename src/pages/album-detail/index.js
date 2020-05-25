@@ -44,12 +44,22 @@ const Album = () => {
   }, [albumID]);
 
   const handleClick = (id) => {
-   // e.preventDefault();
-    console.log(favorites, Array.isArray(favorites))
-    let newfavorites = favorites
-    newfavorites.push(id)
-    console.log(newfavorites)
-    setFavorites(newfavorites)
+    // e.preventDefault();
+    //   console.log(favorites, Array.isArray(favorites))
+    if (favorites.includes(id)) {
+      let newfavorites = favorites
+      const index = newfavorites.indexOf(id);
+      if (index > -1) {
+        newfavorites.splice(index, 1);
+        setFavorites(newfavorites)
+      }
+    }
+    else {
+      let newfavorites = favorites
+      newfavorites.push(id)
+      console.log(newfavorites)
+      setFavorites(newfavorites)
+    }
   }
 
   return (
@@ -81,7 +91,11 @@ const Album = () => {
                     <div key={song.id + 1}>
                       <div className="CD-Box--song"  >
                         <p className="CD-Box--song--name" >{song.name}</p>
-                        <div className="CD-Box--song--isFav" onClick={e => handleClick(song.id)}> F </div>
+                        <div className="CD-Box--song--isFav" onClick={e => handleClick(song.id)}>
+                          {
+                            favorites.includes(song.id) ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>
+                          }
+                        </div>
                       </div>
                       {song.preview_url &&
                         <div className="CD-Box--player">

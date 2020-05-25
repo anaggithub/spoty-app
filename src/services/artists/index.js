@@ -1,7 +1,6 @@
 import config from "../../config";
 
 const { HOST, TOKEN } = config.API_SPOTIFY;
-
 const myHeaders = {
   Authorization: `Bearer ${TOKEN}`,
   "Content-Type": "application/json",

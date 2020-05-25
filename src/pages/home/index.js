@@ -7,24 +7,21 @@ import callTracks from "../../services/favorites";
 
 const Home = () => {
   const { favorites } = useFavorites();
- // console.log(favorites, "Accediendo a favoritos desde home")
   const [favoriteSongs, setFavoriteStongs] = useState([]);
 
   useEffect(() => {
-    // acá no sé cómo validar que si no hay favoritos, no llame a fetch.
-   // console.log(favorites, typeof favorites) // por qué es type object si yo defini que es un array ..
-
-    async function fetchData() {
-      let res = await callTracks(favorites);
-      console.log(res)
-      const songsByArtist = res.reduce((accumulator, song) => {
-        const previousSongs = accumulator[song.artists[0].name] || [];
-        return { ...accumulator, [song.artists[0].name]: [...previousSongs, song] };
-      }, {});
-//      console.log(songsByArtist)
-      setFavoriteStongs(songsByArtist);
+    console.log(favorites)
+    if (favorites.length > 0) {    
+      async function fetchData() {
+        let res = await callTracks(favorites);
+        const songsByArtist = res.reduce((accumulator, song) => {
+          const previousSongs = accumulator[song.artists[0].name] || [];
+          return { ...accumulator, [song.artists[0].name]: [...previousSongs, song] };
+        }, {});
+        setFavoriteStongs(songsByArtist);
+      }
+      fetchData();
     }
-    fetchData();
   }, [favorites]);
 
   return (
@@ -44,8 +41,8 @@ const Home = () => {
         />
       </main>
       <section className="favorites">
-        {favoriteSongs && <h2>Favorites: </h2>}
-        { favoriteSongs &&
+        {favorites.length <0 && <h2>Favorites: </h2>}
+        {favoriteSongs &&
           Object.keys(favoriteSongs).map(key => {
             return (
               <div className="favorites--box" key={key + 1}>
