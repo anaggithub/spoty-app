@@ -12,7 +12,7 @@ const callAlbumByID = async (id) => {
     headers: myHeaders,
   });
   let artistDetail = await res.json();
-  console.log(artistDetail, typeof artistDetail);
+ // console.log(artistDetail, typeof artistDetail);
   return artistDetail;
 };
 

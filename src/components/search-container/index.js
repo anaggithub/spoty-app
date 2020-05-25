@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./index.scss";
 import Input from "../forms/input";
-import callArtists from "../../services/artists";
-import useArtists from "../../context/artists";
 import { Redirect } from "react-router-dom";
+import useSearchValue from "../../context/search-value";
 
 const SearchContainer = ({ classes, inputPlaceholder }) => {
   const [search, setSearch] = useState("");
@@ -11,9 +10,7 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
 
   const [searchError, setSearchError] = useState(false);
   const [searchErrorMessage, setSearchErrorMessage] = useState("");
-
-  const { setArtists } = useArtists();
-  //console.log(artistID)
+  const { setSearchValue } = useSearchValue();
 
   const handleSubmit = async (e) => {
     setSearchError(false);
@@ -27,25 +24,9 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
       setSearchErrorMessage("Solo se aceptan letras.");
       setSearchError(true);
     } else {
-      
-      const res = await callArtists(search);
 
-      if (res.error) {
-        setSearchErrorMessage("Error: " + res.error.message);
-        setSearchError(true);
-
-      } else {
-        console.log(res)
-        let data = res.artists.items;
-        if (!data || !data.length) {
-          //ESTA VALIDACION NO ENTIENDO POR QUE SOLO FUNCIONA CON .LENGHT :(
-          setSearchErrorMessage("No se encontraron resultados.");
-          setSearchError(true);
-        } else {
-          setArtists(data);
-          setRedirect(true);
-        }
-      }
+      setSearchValue(search);
+      setRedirect(true);
     }
   };
 

@@ -9,21 +9,17 @@ import { Redirect } from "react-router-dom";
 const Album = () => {
   const { albumID } = useAlbumID();
   const { favorites, setFavorites } = useFavorites();
-
   const [album, setAlbum] = useState([]);
   const [albumArtist, setAlbumArtist] = useState([]);
   const [albumImage, setAlbumImage] = useState([]);
   const [songsByCD, setSongsByCD] = useState([]);
-
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    console.log(albumID)
+ //   console.log(albumID)
      if (albumID) {
       async function fetchData() {
-        let res1 = await callAlbumByID(
-          albumID || window.localStorage.getItem("albumID")
-        );
+        let res1 = await callAlbumByID(albumID);
         if (res1.error) {
           console.log("Error en el fetch de album por ID: " + res1.error.message + ". Redirigiendo a home");
           setRedirect(true);
@@ -33,9 +29,7 @@ const Album = () => {
           setAlbumArtist(res1.artists[0])
           setAlbumImage(res1.images[0]);
         }
-        let res2 = await callAlbumSongs(
-          albumID || window.localStorage.getItem("albumID")
-        );
+        let res2 = await callAlbumSongs(albumID);
         if (res2.error) {
           console.log("Error en el fetch de canciones por album: " + res2.error.message + ". Redirigiendo a home");
           setRedirect(true);

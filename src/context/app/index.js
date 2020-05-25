@@ -5,7 +5,8 @@ const AppConsumer = React.createContext();
 const AppProvider = ({ children }) => {
   const [appStorage, setStorage] = useState({
     favorites: JSON.parse(localStorage.getItem("favorites") || '[]'),
-    artists: JSON.parse(localStorage.getItem("artists") || '[]'),
+ //   artists: JSON.parse(localStorage.getItem("artists") || '[]'),
+    searchValue: localStorage.getItem("searchValue") || '[]',
     artistID: localStorage.getItem("artistID") || "",
     albumID: localStorage.getItem("albumID") || "",
   });

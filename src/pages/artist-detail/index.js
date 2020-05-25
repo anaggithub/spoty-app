@@ -17,12 +17,10 @@ const ArtistDetail = () => {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    console.log(artistID)
+ //   console.log(artistID)
     if (artistID) {
-      async function fetchData() {
-        let res1 = await callArtistByID(
-          artistID || window.localStorage.getItem("artistID")
-        );
+        async function fetchData() {
+        let res1 = await callArtistByID(artistID);
 
         if (res1.error) {
           console.log("Error en el fetch de artista por ID: " + res1.error.message + ". Redirigiendo a home");
@@ -34,9 +32,7 @@ const ArtistDetail = () => {
           setArtistImage(res1.images[0]);
         }
 
-        let res2 = await callArtistAlbums(
-          artistID || window.localStorage.getItem("artistID")
-        );
+        let res2 = await callArtistAlbums(artistID);
         if (res2.error) {
           console.log("Error en el fetch de albumes por Artista: " + res2.error.message + ". Redirigiendo a home");
           setRedirect(true);
