@@ -14,6 +14,7 @@ const HeaderWithSearch = () => {
   return (
     <header className="header">
       <nav className="header--nav container">
+        <div className="header--invisiblediv"></div>
         <Link to="/home/">
           <APILogo className="header--logo" />
         </Link>

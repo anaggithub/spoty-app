@@ -3,21 +3,22 @@
 .header {
   background-color: $color-secondary;
   width: 100%;
-  height: 80px;
+  height: 82px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #c9c9c9;
   position: relative;
-
   &--nav {
     width: 100%;
-    // background-color: orange;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     padding: 0 2rem;
+  }
+  &--invisiblediv {
+    width: 50px;
   }
   &--icon {
     padding: 5px;
@@ -25,20 +26,14 @@
     cursor: pointer;
   }
   &--search {
-    
-    input {
-      padding-left: 5px;
-      color: $color-primary;
-      background-color: transparent;
-      width: 200px;
-    }
-    i {
-      padding-right: 10px;
-    }
-    .input--row--error {
-      margin-top: 5px;
-      font-family: $font-secondary;
-      font-size: 1rem;
+    .input--row {
+      &--input {
+        margin-left: 10px;
+      }
+      &--error {
+        padding-top: 3px;
+        font-size: 0.8rem;
+      }
     }
   }
 }
@@ -48,29 +43,18 @@
   //    overflow-x: hidden;
   // }
   .header {
+    &--invisiblediv {
+      display: block;
+    }
     &--search {
-      // display: none;
-      
-      background-color: $color-secondary;
+      border-bottom: 1px solid #c9c9c9;
       position: absolute;
       z-index: 1;
       left: 0;
-      margin-top: 80px;
+      margin-top: 81px;
       padding-top: 20px;
-      padding-right: 10px;
       transform: translateX(-100%);
       //transition: transform 0.5s ease-in;
-
-      .input--row {
-        //max-width: 60%;
-        justify-content: flex-end;
-      }
-      input {
-        background-color: $color-secondary;
-      }
-      i {
-        display: none;
-      }
     }
     .active {
       transform: translateX(0%);
@@ -80,16 +64,27 @@
 
 @media only screen and (min-width: 769px) {
   .header {
+    justify-content: space-between;
+    &--invisiblediv {
+      display: none;
+    }
     &--icon {
       display: none;
     }
     &--search {
-      background-color: transparent;
+      form {
+        width: 100%;
+      }
       display: flex;
-      justify-content: flex-end;
+      width: 100%;
       margin-top: 20px;
       margin-right: 20px;
       padding: 0;
+      .input--row {
+        &--input {
+          margin-left: 10px;
+        }
+      }
     }
   }
 }

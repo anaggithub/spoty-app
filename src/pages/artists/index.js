@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import {LayoutArtists} from "../../components/layouts";
+import { LayoutArtists } from "../../components/layouts";
 import SearchContainer from "../../components/search-container";
 import useSearchValue from "../../context/search-value";
 import useArtistID from "../../context/artist-id";
@@ -11,6 +11,8 @@ const Artists = () => {
 
   const { searchValue } = useSearchValue();
   const { setArtistID } = useArtistID();
+  const [searchError, setSearchError] = useState(false);
+  const [searchErrorMessage, setSearchErrorMessage] = useState("");
   const [artists, setArtists] = useState([]);
   const [redirect, setRedirect] = useState(false);
 
@@ -23,14 +25,17 @@ const Artists = () => {
 
         if (res.error) {
           console.log("Error en el fetch de artistas: " + res.error.message + ". Redrigiendo a home");
-           setRedirect(true);
+          setRedirect(true);
 
         } else {
           console.log(res)
           let data = res.artists.items;
           if (!data.length) {
+            setSearchError(true)
+            setSearchErrorMessage("No se encontraron resultados")
             console.log("no se encontraron resultados!, ups cagué jajajajaja ")
           } else {
+            setSearchError(false)
             setArtists(data);
           }
         }
@@ -52,6 +57,8 @@ const Artists = () => {
           <SearchContainer
             classes="artist-list--search"
             inputPlaceholder="Type the name of your favourite artist"
+            error={searchError}
+            errorMessage={searchErrorMessage}
           />
           <p className="artist-list--location">Home > Artists</p>
         </div>
@@ -60,7 +67,6 @@ const Artists = () => {
           {artists &&
             artists.map((elem) => {
               if (elem.images[0]) {
-                // console.log(elem.id, typeof elem.id);
                 return (
                   <Link to="/home/artists/artist" key={elem.id}>
                     <ArtistBox

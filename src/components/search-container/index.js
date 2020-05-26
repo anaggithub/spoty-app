@@ -4,7 +4,7 @@ import Input from "../forms/input";
 import { Redirect } from "react-router-dom";
 import useSearchValue from "../../context/search-value";
 
-const SearchContainer = ({ classes, inputPlaceholder }) => {
+const SearchContainer = ({ classes, inputPlaceholder, errorMessage, error }) => {
   const [search, setSearch] = useState("");
   const [redirect, setRedirect] = useState(false);
 
@@ -40,9 +40,8 @@ const SearchContainer = ({ classes, inputPlaceholder }) => {
           name="search"
           type="text"
           onChange={handleChange}
-          error={searchError}
-          errorMessage={searchErrorMessage}
-          classes="search-container--input"
+          error={error || searchError}
+          errorMessage={errorMessage || searchErrorMessage}
           placeholder={inputPlaceholder}
         >
           <i className="fas fa-search "></i>

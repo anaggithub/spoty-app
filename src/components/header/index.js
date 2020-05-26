@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 const Header = () => {
 
   return (
-    <header className="header">
+    <header className="header-default">
       <Link to="/home/">
-        <APILogo className="header--logo" />
+        <APILogo className="header-default--logo" />
       </Link>
     </header>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
-import LayoutWithSearch from "../../components/layouts";
+import {LayoutWithSearch} from "../../components/layouts";
 import useAlbumID from "../../context/album-id";
 import useFavorites from "../../context/favorites";
 import callAlbumByID, { callAlbumSongs } from "../../services/album-detail";

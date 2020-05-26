@@ -7,10 +7,9 @@ import callTracks from "../../services/favorites";
 
 const Home = () => {
   const { favorites } = useFavorites();
-  const [favoriteSongs, setFavoriteStongs] = useState([]);
+  const [favoriteSongs, setFavoriteStongs] = useState({});
 
   useEffect(() => {
-    //console.log(favorites)
     if (favorites.length > 0) {
       async function fetchData() {
         let res = await callTracks(favorites);
@@ -45,7 +44,7 @@ const Home = () => {
         />
       </main>
       <section className="favorites">
-        {favorites.length < 0 && <h2>Favorites: </h2>}
+        {favorites && <h2 className="favorites--title">Favorites: </h2>}
         {favoriteSongs &&
           Object.keys(favoriteSongs).map(key => {
             return (
