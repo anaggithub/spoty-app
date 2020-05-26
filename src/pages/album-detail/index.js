@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
-import {LayoutWithSearch} from "../../components/layouts";
+import { LayoutWithSearch } from "../../components/layouts";
 import useAlbumID from "../../context/album-id";
 import useFavorites from "../../context/favorites";
 import callAlbumByID, { callAlbumSongs } from "../../services/album-detail";
@@ -14,10 +14,11 @@ const Album = () => {
   const [albumImage, setAlbumImage] = useState([]);
   const [songsByCD, setSongsByCD] = useState([]);
   const [redirect, setRedirect] = useState(false);
+  const [durationIsShown, setDurationIsShown] = useState(false);
 
   useEffect(() => {
- //   console.log(albumID)
-     if (albumID) {
+    //   console.log(albumID)
+    if (albumID) {
       async function fetchData() {
         let res1 = await callAlbumByID(albumID);
         if (res1.error) {
@@ -45,7 +46,7 @@ const Album = () => {
       }
       fetchData();
     }
-    else{
+    else {
       console.log("No hay id de album en context, redirigiendo a home")
       setRedirect(true);
     }
@@ -66,6 +67,16 @@ const Album = () => {
       console.log(newfavorites)
       setFavorites(newfavorites)
     }
+  }
+
+  //ESTUVE TRES HS HACIENDO ESTA FUNCIONNNNN
+  const handleCDClick = () => {
+    const newSongsByCD = songsByCD
+    const songsByCdOrdered = Object.keys(newSongsByCD).reduce((accumulator, key) => {
+      return { ...accumulator, [key]: newSongsByCD[key].sort((a, b) => a.duration_ms - b.duration_ms) };
+    }, {})
+//    console.log(songsByCdOrdered)
+    setSongsByCD(songsByCdOrdered);
   }
 
   return (
@@ -92,7 +103,12 @@ const Album = () => {
             Object.keys(songsByCD).map(key => {
               return (
                 <div className="CD-Box" key={key + 1}>
-                  <h4 className="CD-Box--name" >CD {key}</h4>
+                  <h4 className="CD-Box--name" onMouseEnter={() => setDurationIsShown(true)}
+                    onMouseLeave={() => setDurationIsShown(false)}
+                    onClick={e => handleCDClick()}> CD {key}</h4>
+                  {durationIsShown && (
+                    <div className="CD-Box--name-hover"> Click to order the songs by track duration!</div>
+                  )}
                   {songsByCD[key].map(song =>
                     <div key={song.id + 1}>
                       <div className="CD-Box--song"  >

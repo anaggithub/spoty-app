@@ -39,10 +39,30 @@
     .CD-Box {
       margin-bottom: 40px;
       border: rgb(201, 201, 201) solid 1px;
-
+      position: relative;
       &--name {
         padding: 5px;
         border-bottom: rgb(201, 201, 201) solid 1px;
+        &-hover {
+          padding: 5px;
+          font-size: 0.8rem;
+          position: absolute;
+          top: 45px;
+          left: 20px;
+          background-color: $color-dark-gray;
+          color: $color-secondary;
+        }
+        &-hover::before {
+          content: "";
+          position: absolute;
+          bottom: 100%;
+          left: 10%;
+          margin-left: -5px;
+          border-width: 9px;
+          border-style: solid;
+         // background-color: violet;
+          border-color:  transparent transparent #555 transparent;
+        }
       }
       &--song {
         display: flex;
