@@ -3,13 +3,21 @@ import "./index.scss";
 import LayoutDefault from "../../components/layouts";
 import SearchContainer from "../../components/search-container";
 import useFavorites from "../../context/favorites";
+import { UseSearchError, UseSearchErrorMessage } from "../../context/search-errors";
 import callTracks from "../../services/favorites";
 
 const Home = () => {
   const { favorites } = useFavorites();
   const [favoriteSongs, setFavoriteStongs] = useState({});
+  
+  const { setSearchError } = UseSearchError();
+  const { setSearchErrorMessage } = UseSearchErrorMessage();
 
   useEffect(() => {
+
+    setSearchError(false)
+    setSearchErrorMessage("")
+    
     if (favorites.length > 0) {
       async function fetchData() {
         let res = await callTracks(favorites);
@@ -64,7 +72,7 @@ const Home = () => {
           })
         }
       </section>
-      
+
     </LayoutDefault>
   );
 };

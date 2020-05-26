@@ -28,7 +28,7 @@ const HeaderWithSearch = () => {
       ></SearchContainer>
     </header>
   );
- };
+};
 
 export default HeaderWithSearch;
 

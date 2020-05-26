@@ -3,17 +3,20 @@ import "./index.scss";
 import Input from "../forms/input";
 import { Redirect } from "react-router-dom";
 import useSearchValue from "../../context/search-value";
+import { UseSearchError, UseSearchErrorMessage } from "../../context/search-errors";
 
-const SearchContainer = ({ classes, inputPlaceholder, errorMessage, error }) => {
+const SearchContainer = ({ classes, inputPlaceholder }) => {
   const [search, setSearch] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  const [searchError, setSearchError] = useState(false);
-  const [searchErrorMessage, setSearchErrorMessage] = useState("");
+  const { searchError, setSearchError } = UseSearchError();
+  const { searchErrorMessage, setSearchErrorMessage } = UseSearchErrorMessage();
+
   const { setSearchValue } = useSearchValue();
 
   const handleSubmit = async (e) => {
     setSearchError(false);
+    setSearchErrorMessage("");
     e.preventDefault();
     let letters = /^[A-Za-z ]+$/;
 
@@ -26,6 +29,8 @@ const SearchContainer = ({ classes, inputPlaceholder, errorMessage, error }) => 
     } else {
       setSearchValue(search);
       setRedirect(true);
+      setSearchError(false);
+      setSearchErrorMessage("");
     }
   };
 
@@ -40,8 +45,8 @@ const SearchContainer = ({ classes, inputPlaceholder, errorMessage, error }) => 
           name="search"
           type="text"
           onChange={handleChange}
-          error={error || searchError}
-          errorMessage={errorMessage || searchErrorMessage}
+          error={searchError}
+          errorMessage={searchErrorMessage}
           placeholder={inputPlaceholder}
         >
           <i className="fas fa-search "></i>

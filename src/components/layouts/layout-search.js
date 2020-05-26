@@ -8,7 +8,7 @@ const LayoutWithSearch = ({ children }) => {
 
     return (
         <div className="default-layout container">
-            <HeaderWithSearch />
+            <HeaderWithSearch/>
             <div className="default-layout--content">
                 {children}
             </div>

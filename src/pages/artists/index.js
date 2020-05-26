@@ -3,6 +3,7 @@ import "./index.scss";
 import { LayoutArtists } from "../../components/layouts";
 import SearchContainer from "../../components/search-container";
 import useSearchValue from "../../context/search-value";
+import { UseSearchError, UseSearchErrorMessage } from "../../context/search-errors";
 import useArtistID from "../../context/artist-id";
 import callArtists from "../../services/artists";
 import { Link, Redirect } from "react-router-dom";
@@ -11,8 +12,8 @@ const Artists = () => {
 
   const { searchValue } = useSearchValue();
   const { setArtistID } = useArtistID();
-  const [searchError, setSearchError] = useState(false);
-  const [searchErrorMessage, setSearchErrorMessage] = useState("");
+  const { setSearchError } = UseSearchError();
+  const { setSearchErrorMessage } = UseSearchErrorMessage();
   const [artists, setArtists] = useState([]);
   const [redirect, setRedirect] = useState(false);
 
@@ -20,31 +21,30 @@ const Artists = () => {
 
     if (searchValue) {
       async function fetchData() {
-
         const res = await callArtists(searchValue);
-
         if (res.error) {
           console.log("Error en el fetch de artistas: " + res.error.message + ". Redrigiendo a home");
           setRedirect(true);
-
         } else {
           console.log(res)
-          let data = res.artists.items;
-          if (!data.length) {
+          let items = res.artists.items;
+          if (!items.length) {
             setSearchError(true)
             setSearchErrorMessage("No se encontraron resultados")
             console.log("no se encontraron resultados!, ups cagué jajajajaja ")
+           
           } else {
             setSearchError(false)
-            setArtists(data);
+            setSearchErrorMessage("")
+            setArtists(items);
           }
         }
       }
       fetchData()
+      setSearchError(false)
     }
     else {
       console.log("No hay valor de busqueda  en context, redirigiendo a home")
-      setRedirect(true);
     }
   }, [searchValue]);
 
@@ -57,8 +57,6 @@ const Artists = () => {
           <SearchContainer
             classes="artist-list--search"
             inputPlaceholder="Type the name of your favourite artist"
-            error={searchError}
-            errorMessage={searchErrorMessage}
           />
           <p className="artist-list--location">Home > Artists</p>
         </div>

@@ -5,42 +5,31 @@
   margin-top: 20px;
   padding: 0 5%;
   text-align: left;
-  // background-color: pink;
   &--info {
     padding-top: 40px;
-    //background-color: yellow;
   }
   &--title {
     margin-top: 10px;
-    //background-color: yellow;
   }
   &--paragraph {
     width: 100%;
     margin: 20px 0;
   }
-
   &--search {
     margin-top: 30px;
-    //   background-color: yellow;
     .input--row {
-      //     background-color: pink;
       width: 100%;
       justify-content: center;
-
       &--input {
         border: 1px solid #c9c9c9;
+        width: 100%;
       }
-    }
-    input {
-      //   padding-left: 5px;
-      width: 100%;
     }
     i {
       padding-right: 10px;
     }
     .input--row--error {
       margin-top: 5px;
-      //font-family: $font-secondary;
       font-size: 1rem;
     }
   }
@@ -58,7 +47,6 @@
   &--box {
     margin-bottom: 40px;
     border: rgb(201, 201, 201) solid 1px;
-
     &--artist {
       padding: 5px;
       border-bottom: rgb(201, 201, 201) solid 1px;
@@ -69,7 +57,6 @@
     &--player {
       text-align: center;
       background-color: #f1f3f4;
-
       audio {
         width: 100%;
       }
@@ -91,7 +78,6 @@
     padding: 0 5%;
     font-size: 1.1rem;
     &--search {
-      //  padding-left: 10%;
       margin-top: 40px;
     }
     p {

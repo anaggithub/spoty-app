@@ -5,9 +5,11 @@ const AppConsumer = React.createContext();
 const AppProvider = ({ children }) => {
   const [appStorage, setStorage] = useState({
     favorites: JSON.parse(localStorage.getItem("favorites") || '[]'),
-    searchValue: localStorage.getItem("searchValue") || '[]',
     artistID: localStorage.getItem("artistID") || "",
     albumID: localStorage.getItem("albumID") || "",
+    searchValue: localStorage.getItem("searchValue") || '[]',
+    searchError: false,
+    searchErrorMessage: ""
   });
 
   return (

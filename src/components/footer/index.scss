@@ -5,12 +5,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
- // font-family: $font-secondary;
   height: 80px;
   padding: 0 1%;
   font-size: 0.8rem;
-  // background-color: pink;
-
+  position: absolute;
+  bottom: 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -18,5 +17,3 @@
     font-size: 0.9rem;
   }
 }
-
-
