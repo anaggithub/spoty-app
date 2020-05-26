@@ -52,7 +52,7 @@ const Album = () => {
     }
   }, [albumID]);
 
-  const handleClick = (id) => {
+  const handleStarClick = (id) => {
     if (favorites.includes(id)) {
       let newfavorites = favorites
       const index = newfavorites.indexOf(id);
@@ -64,18 +64,16 @@ const Album = () => {
     else {
       let newfavorites = favorites
       newfavorites.push(id)
-      console.log(newfavorites)
       setFavorites(newfavorites)
     }
   }
 
-  //ESTUVE TRES HS HACIENDO ESTA FUNCIONNNNN
   const handleCDClick = () => {
     const newSongsByCD = songsByCD
     const songsByCdOrdered = Object.keys(newSongsByCD).reduce((accumulator, key) => {
       return { ...accumulator, [key]: newSongsByCD[key].sort((a, b) => a.duration_ms - b.duration_ms) };
     }, {})
-//    console.log(songsByCdOrdered)
+    //    console.log(songsByCdOrdered)
     setSongsByCD(songsByCdOrdered);
   }
 
@@ -105,7 +103,9 @@ const Album = () => {
                 <div className="CD-Box" key={key + 1}>
                   <h4 className="CD-Box--name" onMouseEnter={() => setDurationIsShown(true)}
                     onMouseLeave={() => setDurationIsShown(false)}
-                    onClick={e => handleCDClick()}> CD {key}</h4>
+                    onClick={e => handleCDClick()}>
+                    CD {key}
+                  </h4>
                   {durationIsShown && (
                     <div className="CD-Box--name-hover"> Click to order the songs by track duration!</div>
                   )}
@@ -113,7 +113,7 @@ const Album = () => {
                     <div key={song.id + 1}>
                       <div className="CD-Box--song"  >
                         <p className="CD-Box--song--name" >{song.name}</p>
-                        <div className="CD-Box--song--isFav" onClick={e => handleClick(song.id)}>
+                        <div className="CD-Box--song--isFav" onClick={e => handleStarClick(song.id)}>
                           {
                             favorites.includes(song.id) ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>
                           }

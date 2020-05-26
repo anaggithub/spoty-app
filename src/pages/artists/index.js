@@ -18,7 +18,7 @@ const Artists = () => {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-
+console.log(searchValue)
     if (searchValue) {
       async function fetchData() {
         const res = await callArtists(searchValue);
@@ -31,7 +31,7 @@ const Artists = () => {
           if (!items.length) {
             setSearchError(true)
             setSearchErrorMessage("No se encontraron resultados")
-            console.log("no se encontraron resultados!, ups cagué jajajajaja ")
+            console.log("no se encontraron resultados!")
            
           } else {
             setSearchError(false)
@@ -45,6 +45,7 @@ const Artists = () => {
     }
     else {
       console.log("No hay valor de busqueda  en context, redirigiendo a home")
+      setRedirect(true)
     }
   }, [searchValue]);
 

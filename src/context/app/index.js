@@ -4,10 +4,10 @@ const AppConsumer = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [appStorage, setStorage] = useState({
-    favorites: JSON.parse(localStorage.getItem("favorites") || '[]'),
+    favorites: JSON.parse(localStorage.getItem("favorites") || "[]"),
     artistID: localStorage.getItem("artistID") || "",
     albumID: localStorage.getItem("albumID") || "",
-    searchValue: localStorage.getItem("searchValue") || '[]',
+    searchValue: localStorage.getItem("searchValue") || "",
     searchError: false,
     searchErrorMessage: ""
   });
