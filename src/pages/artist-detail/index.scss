@@ -7,17 +7,13 @@
   padding: 0 5%;
   font-size: 0.8rem;
   text-align: left;
-  //  background-color: pink;
   &--info {
     display: flex;
     width: 100%;
     margin-bottom: 20px;
-    //   background-color: yellow;
-
     &--logo {
       width: 80px;
     }
-
     &--content {
       padding-left: 5%;
       @include flex-column-box;
@@ -25,13 +21,11 @@
       width: 100%;
     }
   }
-
   &--location {
     margin-top: 10px;
     padding-bottom: 20px;
     border-bottom: 1px solid #c9c9c9;
   }
-
   &--grid {
     @include flex-column-box;
     margin-top: 30px;
@@ -40,19 +34,14 @@
       margin-top: 20px;
       display: flex;
       border: rgb(201, 201, 201) solid 1px;
-
       &--image {
         width: 50%;
-     //     height: 50%;
       }
-
       &--content {
         text-align: left;
         padding: 10px;
-        //  height: auto;
       }
       &--name {
-        // width: 50%;
         margin-bottom: 10px;
       }
     }
@@ -71,7 +60,6 @@
 
     &--grid {
       .album-box {
-        //background-color: $color-light-gray;
         margin-top: 0px;
       }
       display: grid;
@@ -88,8 +76,5 @@
     &--grid {
       grid-gap: 30px;
     }
-    // p {
-    //   margin-bottom: 5px;
-    // }
   }
 }

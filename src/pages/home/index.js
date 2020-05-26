@@ -8,8 +8,8 @@ import callTracks from "../../services/favorites";
 
 const Home = () => {
   const { favorites } = useFavorites();
-  const [favoriteSongs, setFavoriteStongs] = useState({});
-  
+  const [favoriteSongs, setFavoriteStongs] = useState([]);
+
   const { setSearchError } = UseSearchError();
   const { setSearchErrorMessage } = UseSearchErrorMessage();
 
@@ -17,18 +17,15 @@ const Home = () => {
 
     setSearchError(false)
     setSearchErrorMessage("")
-    
+
     if (favorites.length > 0) {
       async function fetchData() {
         let res = await callTracks(favorites);
         if (res.error) {
           console.log("Error en el fetch de favoritos: " + res.error.message);
         } else {
-          const songsByArtist = res.tracks.reduce((accumulator, song) => {
-            const previousSongs = accumulator[song.artists[0].name] || [];
-            return { ...accumulator, [song.artists[0].name]: [...previousSongs, song] };
-          }, {});
-          setFavoriteStongs(songsByArtist);
+          console.log(res, typeof res)
+          setFavoriteStongs(res.tracks);
         }
       }
       fetchData();
@@ -52,29 +49,38 @@ const Home = () => {
         />
       </main>
       <section className="favorites">
-        {favorites && <h2 className="favorites--title">Favorites: </h2>}
-        {favoriteSongs &&
-          Object.keys(favoriteSongs).map(key => {
-            return (
-              <div className="favorites--box" key={key + 1}>
-                <h4 className="favorites--box--artist" >{key}</h4>
-                {favoriteSongs[key].map(song =>
-                  <div key={song.id + 1}>
-                    <p className="favorites--box--song" >{song.name}</p>
-                    {song.preview_url &&
-                      <div className="favorites--box--player">
-                        <audio controls src={song.preview_url}></audio>
-                      </div>}
-                  </div>
-                )}
-              </div>
+        {favorites.length >0 && <h2 className="favorites--title">Favorites: </h2>}
+        <div className="favorites--grid">
+          {favoriteSongs &&
+            favoriteSongs.map(elem =>
+              <SongBox
+                name={elem.name}
+                url={elem.album.images[0].url}
+                artist={elem.artists[0].name}
+                album={elem.album.name}
+                key={elem.id}
+              //  onClick={(e) => setAlbumID(elem.id)
+              />
             )
-          })
-        }
+          }
+        </div>
       </section>
-
     </LayoutDefault>
   );
 };
+
+const SongBox = ({ url, name, artist, album }) => {
+  return (
+    <div className="song-box" >
+      <img className="song-box--image" alt="album logo" src={url} />
+      <div className="song-box--content">
+        <h3 className="song-box--name">{name}</h3>
+        <p className="song-box--artist">Artist: {artist}</p>
+        <p className="song-box--album">Album: {album}</p>
+      </div>
+    </div>
+  );
+};
+
 
 export default Home;
