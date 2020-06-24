@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Para correr este proyecto se necesita generar un token desde la documentación de la API de Spotify.
 
-## Available Scripts
+## Pasos para obtener el token
 
-In the project directory, you can run:
+Dirigirse a: [https://developer.spotify.com/console/get-search-item/]
 
-### `yarn start`
+Scrollear hacia abajo y hacer click en Get token. Elegir algún scope, el primero por ejemplo.<br />
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Loguear con cuenta de Spotify (se puede loguear con Facebook!)<br />
+Te redirige nuevamente a la primera página. Scrollear y ya está el token!
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Tengo el token! Ahora?
 
-### `yarn test`
+Ubicar en la carpeta Config el archivo index.js. Pegar el token en donde corresponde.<br />
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Esto es todo amigos!
 
-### `yarn build`
+### Prototipo a partir del cual se realizó el proyecto
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Requisitos Funcionales, tal como me los pidieron:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Como usuario, quiero poder buscar un artista en un formulario y ver el resultado de esa búsqueda.
+- Como usuario, quiero poder seleccionar entre los artistas que aparecieron en el resultado y luego ver un listado de sus álbumes.
+- Como usuario, quiero poder clickear en uno de sus álbumes y ver el nombre del álbum, una foto del álbum y el listado de canciones.
+- Como usuario quiero poder realizar una nueva búsqueda desde cualquier punto de mi aplicación.
+- Como usuario debo poder regresar a la página principal de mi aplicación en cualquier punto del flow.
+- Como usuario quiero poder escuchar un fragmento de cada tema.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Opcionales (todos implementados!)
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Como usuario quiero poder ordenar el listado de temas por duración de los mismos.
+- Como usuario, quiero poder refrescar la página con los resultados de mi búsqueda o el listado de álbumes o el listado de canciones, y quiero que se mantenga el estado.
+- Como usuario, quiero poder marcar una canción como favorita y al refrescar el navegador, quiero seguir viendo cómo favoritas las mismas canciones.
+- Las canciones marcadas como favoritas deben aparecer en una sección en la página principal.
