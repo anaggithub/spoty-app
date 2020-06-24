@@ -1,24 +1,24 @@
 ## Welcome to Spoty App!
 
-Este proyecto es el challenge final de un training en React que me dieron en una empresa.
+Este proyecto es el challenge final de un training en React que me dieron en una empresa, con 10 días para realizarlo.
 Para correrlo se necesita generar un token desde la documentación de la API de Spotify.
 
 ### Pasos para obtener el token
 
-Dirigirse a: https://developer.spotify.com/console/get-search-item/
-Scrollear hacia abajo y hacer click en Get token. Elegir algún scope, el primero por ejemplo.
-Loguear con cuenta de Spotify (se puede loguear con Facebook!)
+Dirigirse a: https://developer.spotify.com/console/get-search-item/.<br />
+Scrollear hacia abajo y hacer click en Get token. Elegir algún scope, el primero por ejemplo.<br />
+Loguear con cuenta de Spotify (se puede loguear con Facebook!)<br />
 Te redirige nuevamente a la primera página. Scrollear y allí estará el token.
 
 ### Tengo el token! Ahora?
 
-Ubicar en la carpeta Config el archivo index.js. Pegar el token en donde corresponde.
+Ubicar en la carpeta Config el archivo index.js. Pegar el token en donde corresponde.<br />
 Correr con npm start!!!
 
 ### Prototipo
 
-En la carpeta public están guardadas las capturas del prototipo que me dieron para el challenge.
-Lo único que no alcancé a hacer fueron los tooltips de los favoritos, de todas maneras esos no estaban en los requisitos, así que no lo prioricé.
+En la carpeta public están guardadas las capturas del prototipo que me dieron para el challenge.<br />
+Lo único que no alcancé a hacer fueron los tooltips de los favoritos, de todas maneras esa funcionalidad no estaba en los requisitos, así que no la prioricé.
 
 ### Requisitos Funcionales, tal como los pidieron:
 
