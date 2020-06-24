@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
-import {LayoutWithSearch} from "../../components/layouts";
+import { LayoutWithSearch } from "../../components/layouts";
 import useAlbumID from "../../context/album-id";
 import useArtistID from "../../context/artist-id";
 import callArtistByID, { callArtistAlbums } from "../../services/artist-detail";
@@ -17,9 +17,9 @@ const ArtistDetail = () => {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
- //   console.log(artistID)
+    //   console.log(artistID)
     if (artistID) {
-        async function fetchData() {
+      async function fetchData() {
         let res1 = await callArtistByID(artistID);
 
         if (res1.error) {
@@ -44,7 +44,7 @@ const ArtistDetail = () => {
       }
       fetchData();
     }
-    else{
+    else {
       setRedirect(true);
     }
   }, [artistID]);
@@ -69,7 +69,7 @@ const ArtistDetail = () => {
         </div>
 
         <p className="artist-detail--location">
-          Home > Artists > {artist && artist.name}
+          {`Home > Artists > ${artist && artist.name}`}
         </p>
 
         <div className="artist-detail--grid">
