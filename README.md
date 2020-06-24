@@ -1,27 +1,26 @@
-Este proyecto es el challenge final de un training en React que me dieron en una empresa.
+## Welcome to Spoty App!
 
+Este proyecto es el challenge final de un training en React que me dieron en una empresa.
 Para correrlo se necesita generar un token desde la documentación de la API de Spotify.
 
-## Pasos para obtener el token
+### Pasos para obtener el token
 
 Dirigirse a: https://developer.spotify.com/console/get-search-item/
-
-Scrollear hacia abajo y hacer click en Get token. Elegir algún scope, el primero por ejemplo.<br />
-
-Loguear con cuenta de Spotify (se puede loguear con Facebook!)<br />
+Scrollear hacia abajo y hacer click en Get token. Elegir algún scope, el primero por ejemplo.
+Loguear con cuenta de Spotify (se puede loguear con Facebook!)
 Te redirige nuevamente a la primera página. Scrollear y allí estará el token.
 
 ### Tengo el token! Ahora?
 
-Ubicar en la carpeta Config el archivo index.js. Pegar el token en donde corresponde.<br />
-Correr con npm start!!! No olvidarse del npm install hihi.
+Ubicar en la carpeta Config el archivo index.js. Pegar el token en donde corresponde.
+Correr con npm start!!!
 
 ### Prototipo
 
 En la carpeta public están guardadas las capturas del prototipo que me dieron para el challenge.
 Lo único que no alcancé a hacer fueron los tooltips de los favoritos, de todas maneras esos no estaban en los requisitos, así que no lo prioricé.
 
-### Requisitos Funcionales, tal como me los pidieron:
+### Requisitos Funcionales, tal como los pidieron:
 
 <em>
 - Como usuario, quiero poder buscar un artista en un formulario y ver el resultado de esa búsqueda.
@@ -30,9 +29,9 @@ Lo único que no alcancé a hacer fueron los tooltips de los favoritos, de todas
 - Como usuario quiero poder realizar una nueva búsqueda desde cualquier punto de mi aplicación.
 - Como usuario debo poder regresar a la página principal de mi aplicación en cualquier punto del flow.
 - Como usuario quiero poder escuchar un fragmento de cada tema.
-
-Opcionales (todos implementados!)
-
+</em>
+### Requisitos Funcionales Opcionales, todos implementados!
+<em>
 - Como usuario quiero poder ordenar el listado de temas por duración de los mismos.
 - Como usuario, quiero poder refrescar la página con los resultados de mi búsqueda o el listado de álbumes o el listado de canciones, y quiero que se mantenga el estado.
 - Como usuario, quiero poder marcar una canción como favorita y al refrescar el navegador, quiero seguir viendo cómo favoritas las mismas canciones.
