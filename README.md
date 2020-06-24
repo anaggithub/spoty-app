@@ -31,7 +31,9 @@ Lo único que no alcancé a hacer fueron los tooltips de los favoritos, de todas
 
 ### Requisitos Funcionales Opcionales, todos implementados!
 
-- Como usuario quiero poder ordenar el listado de temas por duración de los mismos.
 - Como usuario, quiero poder refrescar la página con los resultados de mi búsqueda o el listado de álbumes o el listado de canciones, y quiero que se mantenga el estado.
 - Como usuario, quiero poder marcar una canción como favorita y al refrescar el navegador, quiero seguir viendo cómo favoritas las mismas canciones.
 - Las canciones marcadas como favoritas deben aparecer en una sección en la página principal.
+- Como usuario quiero poder ordenar el listado de temas por duración de los mismos.
+
+Con respecto a ese último requisito, en el prototipo no se lo muestra, así que lo implementé dando click en CD1, CD2 en la página de álbum.
