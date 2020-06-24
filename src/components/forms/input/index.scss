@@ -16,8 +16,9 @@
       width: 100%;
       border: 1px solid #c9c9c9;
       outline: none;
+      border-radius: 3px;
       &.errorClass {
-        border: solid 1px $color-red;
+        border: solid 1.5px $color-red;
       }
     }
   }
