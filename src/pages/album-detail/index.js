@@ -62,6 +62,7 @@ const Album = () => {
       }
     }
     else {
+
       let newfavorites = favorites
       newfavorites.push(id)
       setFavorites(newfavorites)
@@ -93,7 +94,7 @@ const Album = () => {
         </div>
 
         <p className="album-detail--location">
-          Home > Artists > {albumArtist && albumArtist.name} > {album && album.name}
+          {`Home > Artists > ${albumArtist && albumArtist.name} > ${album && album.name}`}
         </p>
 
         <div className="album-detail--grid">
@@ -110,7 +111,7 @@ const Album = () => {
                     <div className="CD-Box--name-hover"> Click to order the songs by track duration!</div>
                   )}
                   {songsByCD[key].map(song =>
-                    <div key={song.id + 1}>
+                    <React.Fragment key={song.id + 1}>
                       <div className="CD-Box--song"  >
                         <p className="CD-Box--song--name" >{song.name}</p>
                         <div className="CD-Box--song--isFav" onClick={e => handleStarClick(song.id)}>
@@ -122,8 +123,9 @@ const Album = () => {
                       {song.preview_url &&
                         <div className="CD-Box--player">
                           <audio controls src={song.preview_url}></audio>
-                        </div>}
-                    </div>
+                        </div>
+                      }
+                    </React.Fragment>
                   )}
                 </div>
               )
