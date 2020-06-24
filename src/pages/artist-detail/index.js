@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
 import { LayoutWithSearch } from "../../components/layouts";
+import AlbumBox from "../../components/album-box"
 import useAlbumID from "../../context/album-id";
 import useArtistID from "../../context/artist-id";
 import callArtistByID, { callArtistAlbums } from "../../services/artist-detail";
@@ -94,16 +95,16 @@ const ArtistDetail = () => {
   );
 };
 
-const AlbumBox = ({ url, name, year, onClick }) => {
-  return (
-    <div className="album-box" onClick={onClick}>
-      <img className="album-box--image" alt="album logo" src={url} />
-      <div className="album-box--content">
-        <h3 className="album-box--name">{name}</h3>
-        <p className="album-box--year">{year}</p>
-      </div>
-    </div>
-  );
-};
+// const AlbumBox = ({ url, name, year, onClick }) => {
+//   return (
+//     <div className="album-box" onClick={onClick}>
+//       <img className="album-box--image" alt="album logo" src={url} />
+//       <div className="album-box--content">
+//         <h3 className="album-box--name">{name}</h3>
+//         <p className="album-box--year">{year}</p>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default ArtistDetail;

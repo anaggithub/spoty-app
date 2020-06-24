@@ -1,0 +1,21 @@
+.album-box {
+  margin-top: 20px;
+  display: flex;
+  border: rgb(201, 201, 201) solid 1px;
+  &--image {
+    width: 50%;
+  }
+  &--content {
+    text-align: left;
+    padding: 10px;
+  }
+  &--name {
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .album-box {
+    margin-top: 0px;
+  }
+}
