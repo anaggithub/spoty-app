@@ -1,6 +1,6 @@
 ## Welcome to Spoty App!
 
-Este proyecto es el challenge final de un training en React que me dieron en una empresa, con 10 días para realizarlo.
+Este proyecto es el challenge final de un training en React que me dieron en una empresa.
 Para correrlo se necesita generar un token desde la documentación de la API de Spotify.
 
 ### Pasos para obtener el token
